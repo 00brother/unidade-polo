@@ -6,9 +6,9 @@
 <title>Nome da Escola</title>
 <style>
   /* ===== PALETA =====
-     Branco 60%  → #ffffff, #f8f9fb (fundos, textos, cards)
-     Amarelo 30% → #ffc107, #ffd54f (botões, destaques, ícones)
-     Azul 10%    → #0d47a1, #1565c0 (detalhes, títulos, rodapé)
+     Branco 60%  → #ffffff, #f8f9fb
+     Amarelo 30% → #ffc107, #ffd54f
+     Azul 10%    → #0d47a1, #1565c0
   ================================================= */
 
   :root {
@@ -16,7 +16,6 @@
     --branco-suave: #f8f9fb;
     --amarelo: #ffc107;
     --amarelo-claro: #ffd54f;
-    --amarelo-escuro: #e6a800;
     --azul: #0d47a1;
     --azul-medio: #1565c0;
     --texto: #2b2b2b;
@@ -26,11 +25,13 @@
 
   body { background: var(--branco); color: var(--texto); }
 
-  /* ===== TELA DE ABERTURA ===== */
+  /* ===== TELA DE ABERTURA =====
+     Fundo 100% branco, sem círculo, logo grande
+  ==================================== */
   #splash {
     position: fixed;
     inset: 0;
-    background: var(--branco);
+    background: var(--branco);   /* fundo branco puro */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,44 +40,35 @@
   }
   #splash.hide { opacity: 0; visibility: hidden; }
 
-  #splash::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, var(--amarelo-claro) 0%, var(--branco) 70%);
-    opacity: 0.6;
-  }
-
   #splash img {
-    position: relative;
-    width: 220px;
-    height: 220px;
+    width: 380px;               /* logo bem maior */
+    max-width: 80vw;
+    height: auto;
     object-fit: contain;
-    border-radius: 50%;
-    background: var(--branco);
-    padding: 15px;
-    border: 4px solid var(--amarelo);
-    box-shadow: 0 10px 50px rgba(13, 71, 161, 0.25);
+    /* sem background, sem borda, sem border-radius */
     animation: pulsar 2s ease-in-out infinite;
   }
   @keyframes pulsar {
-    0%, 100% { transform: scale(1);    box-shadow: 0 10px 40px rgba(255,193,7,0.45); }
-    50%      { transform: scale(1.08); box-shadow: 0 10px 70px rgba(255,193,7,0.9); }
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
   }
 
   /* ===== HERO ===== */
   .hero {
     position: relative;
-    min-height: 100vh;
-    background: url('escola.jpg') center/cover no-repeat;
+    /* formato mais retangular (não mais quadradão 100vh) */
+    min-height: 620px;
+    height: 78vh;
+    background: url('escola.jpg') center top / cover no-repeat; /* corta a parte de baixo */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 50px 20px;
+    justify-content: center;
+    padding: 40px 20px;
     text-align: center;
+    overflow: hidden;
   }
-  /* Overlay: leve véu branco para destacar os textos */
+  /* véu branco→azul para destacar os textos */
   .hero::before {
     content: '';
     position: absolute;
@@ -89,16 +81,15 @@
   }
   .hero > * { position: relative; z-index: 2; }
 
+  /* Logo do hero — maior e SEM formato circular */
   .hero .logo {
-    width: 140px;
-    height: 140px;
+    width: 240px;                /* logo grande */
+    max-width: 60vw;
+    height: auto;
     object-fit: contain;
-    border-radius: 50%;
-    background: var(--branco);
-    padding: 10px;
-    border: 4px solid var(--amarelo);
-    box-shadow: 0 8px 30px rgba(13,71,161,0.3);
-    margin-bottom: 25px;
+    /* sem background branco, sem borda, sem border-radius */
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+    margin-bottom: 15px;
     animation: subir 1s ease;
   }
 
@@ -112,7 +103,7 @@
   .hero p.slogan {
     font-size: 1.2rem;
     color: var(--azul-medio);
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     font-weight: 500;
     animation: subir 1s ease 0.4s backwards;
   }
@@ -122,7 +113,6 @@
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 60px;
     animation: subir 1s ease 0.6s backwards;
   }
   .botoes a {
@@ -212,16 +202,8 @@
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(255,193,7,0.45);
   }
-  .card h3 {
-    color: var(--azul);
-    margin-bottom: 12px;
-    font-size: 1.2rem;
-  }
-  .card p {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
+  .card h3 { color: var(--azul); margin-bottom: 12px; font-size: 1.2rem; }
+  .card p  { color: #666; font-size: 0.95rem; line-height: 1.6; }
 
   /* ===== RODAPÉ ===== */
   footer {
@@ -238,11 +220,7 @@
     margin: 0 auto 35px;
   }
   .footer-content div { min-width: 200px; }
-  .footer-content h4 {
-    color: var(--amarelo);
-    margin-bottom: 18px;
-    font-size: 1.1rem;
-  }
+  .footer-content h4 { color: var(--amarelo); margin-bottom: 18px; font-size: 1.1rem; }
   .footer-content p,
   .footer-content a {
     color: #e8eef7;
@@ -252,10 +230,7 @@
     font-size: 0.95rem;
     transition: 0.2s;
   }
-  .footer-content a:hover {
-    color: var(--amarelo);
-    transform: translateX(4px);
-  }
+  .footer-content a:hover { color: var(--amarelo); transform: translateX(4px); }
 
   .footer-bottom {
     text-align: center;
@@ -266,6 +241,8 @@
   }
 
   @media (max-width: 600px) {
+    #splash img { width: 260px; }
+    .hero .logo { width: 170px; }
     .hero h1 { font-size: 2rem; }
     .botoes a { padding: 12px 24px; font-size: 0.95rem; }
   }
@@ -351,7 +328,6 @@
 
   <!-- ===== SCRIPT ===== -->
   <script>
-    // Esconde a tela de abertura após 3 segundos
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('splash').classList.add('hide');
