@@ -25,7 +25,7 @@
     --amarelo-claro: #ffd54f;
     --azul: #0d47a1;
     --azul-medio: #1565c0;
-    --preto: #000000;              /* 🔸 cor das fontes */
+    --preto: #000000;
     --preto-suave: #1a1a1a;
     --fonte-principal: 'Poppins', 'Segoe UI', Arial, sans-serif;
   }
@@ -90,7 +90,7 @@
   }
   .hero > * { position: relative; z-index: 2; }
 
-  /* ===== LOGO DO HERO — cantos arredondados ===== */
+  /* ===== LOGO DO HERO — cantos arredondados, SEM borda amarela ===== */
   .hero .logo {
     width: 320px;
     max-width: 75vw;
@@ -98,20 +98,20 @@
     object-fit: contain;
     background: var(--branco);
     padding: 10px;
-    border: 4px solid var(--amarelo);
+    /* 🔸 border removida */
     border-radius: 28px;
     box-shadow: 0 10px 35px rgba(13,71,161,0.35);
     margin-bottom: 25px;
     animation: subir 1s ease;
   }
 
-  /* ===== TÍTULOS com fonte Poppins + PRETO ===== */
+  /* ===== TÍTULOS ===== */
   .hero h1 {
     font-family: var(--fonte-principal);
     font-size: 3rem;
     font-weight: 800;
     letter-spacing: -0.5px;
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     margin-bottom: 12px;
     text-shadow: 1px 1px 4px rgba(255,255,255,0.9);
     animation: subir 1s ease 0.2s backwards;
@@ -121,7 +121,7 @@
     font-size: 1.25rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     margin-bottom: 35px;
     animation: subir 1s ease 0.4s backwards;
   }
@@ -136,7 +136,7 @@
   .botoes a {
     font-family: var(--fonte-principal);
     text-decoration: none;
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     background: var(--amarelo);
     border: 2px solid var(--amarelo);
     padding: 15px 40px;
@@ -170,14 +170,14 @@
     align-items: center;
     gap: 10px;
     background: var(--amarelo);
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     text-decoration: none;
     font-family: var(--fonte-principal);
     font-weight: 700;
     font-size: 1rem;
     padding: 15px 24px;
     border-radius: 50px;
-    border: 2px solid var(--preto);         /* 🔸 borda preta */
+    border: 2px solid var(--preto);
     box-shadow: 0 10px 30px rgba(13,71,161,0.35);
     transition: 0.3s ease;
     animation: aparecerFlutuante 0.6s ease 1s backwards;
@@ -216,7 +216,7 @@
     font-family: var(--fonte-principal);
     font-size: 2.3rem;
     font-weight: 700;
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     margin-bottom: 10px;
   }
   .info-section h2::after {
@@ -231,7 +231,7 @@
   .info-section > p {
     max-width: 820px;
     margin: 0 auto 55px;
-    color: var(--preto-suave);              /* 🔸 preto suave */
+    color: var(--preto-suave);
     font-size: 1.05rem;
     line-height: 1.7;
     font-weight: 400;
@@ -272,18 +272,18 @@
     box-shadow: 0 4px 12px rgba(255,193,7,0.45);
   }
   .card h3 {
-    color: var(--preto);                    /* 🔸 preto */
+    color: var(--preto);
     margin-bottom: 12px;
     font-size: 1.2rem;
     font-weight: 700;
   }
   .card p {
-    color: var(--preto-suave);              /* 🔸 preto suave */
+    color: var(--preto-suave);
     font-size: 0.95rem;
     line-height: 1.6;
   }
 
-  /* ===== RODAPÉ (fundo azul → mantém texto claro) ===== */
+  /* ===== RODAPÉ ===== */
   footer {
     background: var(--azul);
     color: var(--branco);
@@ -329,7 +329,7 @@
     .hero .logo     { width: 220px; border-radius: 20px; }
     .hero h1        { font-size: 2.1rem; }
     .hero p.slogan  { font-size: 1.05rem; }
-    .botoes a       { padding: 12px 26px; font-size: 0.95rem; }
+    .botoes a       { padding: 12px 30px; font-size: 0.95rem; }
 
     .btn-flutuante {
       bottom: 18px;
@@ -366,7 +366,6 @@
 
     <div class="botoes">
       <a href="#conheca">Conheça</a>
-      <a href="#avaliar">Avaliar</a>
     </div>
   </section>
 
@@ -395,7 +394,7 @@
         <h3>Atividades Extras</h3>
         <p>Esportes, música, arte e projetos que desenvolvem talentos e habilidades.</p>
       </div>
-      <div class="card" id="avaliar">
+      <div class="card">
         <div class="icone">💬</div>
         <h3>Avaliação</h3>
         <p>Nossa comunidade escolar elogia o acolhimento e o ensino. Venha fazer parte!</p>
