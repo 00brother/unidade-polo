@@ -25,13 +25,11 @@
 
   body { background: var(--branco); color: var(--texto); }
 
-  /* ===== TELA DE ABERTURA =====
-     Fundo 100% branco, sem círculo, logo grande
-  ==================================== */
+  /* ===== TELA DE ABERTURA ===== */
   #splash {
     position: fixed;
     inset: 0;
-    background: var(--branco);   /* fundo branco puro */
+    background: var(--branco);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,11 +39,10 @@
   #splash.hide { opacity: 0; visibility: hidden; }
 
   #splash img {
-    width: 380px;               /* logo bem maior */
-    max-width: 80vw;
+    width: 520px;
+    max-width: 85vw;
     height: auto;
     object-fit: contain;
-    /* sem background, sem borda, sem border-radius */
     animation: pulsar 2s ease-in-out infinite;
   }
   @keyframes pulsar {
@@ -56,10 +53,9 @@
   /* ===== HERO ===== */
   .hero {
     position: relative;
-    /* formato mais retangular (não mais quadradão 100vh) */
     min-height: 620px;
     height: 78vh;
-    background: url('escola.jpg') center top / cover no-repeat; /* corta a parte de baixo */
+    background: url('escola.jpg') center top / cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +64,6 @@
     text-align: center;
     overflow: hidden;
   }
-  /* véu branco→azul para destacar os textos */
   .hero::before {
     content: '';
     position: absolute;
@@ -81,15 +76,18 @@
   }
   .hero > * { position: relative; z-index: 2; }
 
-  /* Logo do hero — maior e SEM formato circular */
   .hero .logo {
-    width: 240px;                /* logo grande */
-    max-width: 60vw;
-    height: auto;
-    object-fit: contain;
-    /* sem background branco, sem borda, sem border-radius */
-    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
-    margin-bottom: 15px;
+    width: 340px;
+    max-width: 75vw;
+    height: 340px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background: var(--branco);
+    padding: 8px;
+    border: 5px solid var(--amarelo);
+    box-shadow: 0 10px 35px rgba(13,71,161,0.35);
+    margin-bottom: 20px;
     animation: subir 1s ease;
   }
 
@@ -103,7 +101,7 @@
   .hero p.slogan {
     font-size: 1.2rem;
     color: var(--azul-medio);
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     font-weight: 500;
     animation: subir 1s ease 0.4s backwards;
   }
@@ -138,6 +136,55 @@
   @keyframes subir {
     from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== BOTÃO FLUTUANTE (fixo no canto inferior direito) ===== */
+  .btn-flutuante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: var(--amarelo);
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+
+    padding: 15px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--azul);
+    box-shadow: 0 10px 30px rgba(13,71,161,0.35);
+
+    transition: 0.3s ease;
+    animation: aparecerFlutuante 0.6s ease 1s backwards;
+  }
+  .btn-flutuante:hover {
+    background: var(--azul);
+    color: var(--amarelo);
+    border-color: var(--amarelo);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(13,71,161,0.5);
+  }
+  .btn-flutuante .icone-flutuante {
+    font-size: 1.3rem;
+    display: inline-block;
+    animation: balancar 2.5s ease-in-out infinite;
+  }
+  @keyframes aparecerFlutuante {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes balancar {
+    0%, 100% { transform: rotate(0deg); }
+    20%      { transform: rotate(-12deg); }
+    40%      { transform: rotate(12deg); }
+    60%      { transform: rotate(-6deg); }
+    80%      { transform: rotate(6deg); }
   }
 
   /* ===== INFORMAÇÕES ===== */
@@ -240,11 +287,25 @@
     color: #cfe3f5;
   }
 
+  /* ===== RESPONSIVO ===== */
   @media (max-width: 600px) {
-    #splash img { width: 260px; }
-    .hero .logo { width: 170px; }
-    .hero h1 { font-size: 2rem; }
-    .botoes a { padding: 12px 24px; font-size: 0.95rem; }
+    #splash img     { width: 320px; }
+    .hero .logo     { width: 220px; height: 220px; }
+    .hero h1        { font-size: 2rem; }
+    .botoes a       { padding: 12px 24px; font-size: 0.95rem; }
+
+    /* Botão flutuante no celular: só o ícone (vira uma "bolha") */
+    .btn-flutuante {
+      bottom: 18px;
+      right: 18px;
+      padding: 0;
+      width: 60px;
+      height: 60px;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .btn-flutuante .texto-flutuante { display: none; }
+    .btn-flutuante .icone-flutuante { font-size: 1.6rem; }
   }
 </style>
 </head>
@@ -255,6 +316,12 @@
     <img src="logo.png" alt="Logo da Escola">
   </div>
 
+  <!-- ===== BOTÃO FLUTUANTE (segue a tela) ===== -->
+  <a href="#contato" class="btn-flutuante" aria-label="Entrar em Contato">
+    <span class="icone-flutuante">💬</span>
+    <span class="texto-flutuante">Entrar em Contato</span>
+  </a>
+
   <!-- ===== TELA INICIAL (HERO) ===== -->
   <section class="hero">
     <img src="logo.png" alt="Logo" class="logo">
@@ -264,7 +331,6 @@
     <div class="botoes">
       <a href="#conheca">Conheça</a>
       <a href="#avaliar">Avaliar</a>
-      <a href="#contato">Entrar em Contato</a>
     </div>
   </section>
 
