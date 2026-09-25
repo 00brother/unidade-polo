@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nome da Escola</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+  /* ===== TELA DE ABERTURA ===== */
+  #splash {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0a3d62, #1e6091, #3c9dd0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+  #splash.hide { opacity: 0; visibility: hidden; }
+
+  #splash img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 0 60px rgba(255,255,255,0.5);
+    animation: pulsar 2s ease-in-out infinite;
+  }
+  @keyframes pulsar {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(255,255,255,0.4); }
+    50%      { transform: scale(1.08); box-shadow: 0 0 80px rgba(255,255,255,0.9); }
+  }
+
+  /* ===== HERO / TELA INICIAL ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: url('escola.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    color: #fff;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 20, 40, 0.65);
+    z-index: 1;
+  }
+  .hero > * { position: relative; z-index: 2; }
+
+  .hero .logo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    animation: subir 1s ease;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    animation: subir 1s ease 0.2s backwards;
+  }
+  .hero p.slogan {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    opacity: 0.9;
+    animation: subir 1s ease 0.4s backwards;
+  }
+
+  .botoes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+    animation: subir 1s ease 0.6s backwards;
+  }
+  .botoes a {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid #fff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+  }
+  .botoes a:hover {
+    background: #fff;
+    color: #0a3d62;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  @keyframes subir {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== INFORMAÇÕES ===== */
+  .info-section {
+    padding: 80px 20px;
+    background: #f4f8fb;
+    text-align: center;
+  }
+  .info-section h2 {
+    font-size: 2.2rem;
+    color: #0a3d62;
+    margin-bottom: 20px;
+  }
+  .info-section > p {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .cards {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 25px;
+    width: 300px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    text-align: center;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(10,61,98,0.2);
+  }
+  .card .icone {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    color: #1e6091;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  .card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ===== RODAPÉ ===== */
+  footer {
+    background: #0a3d62;
+    color: #cfe3f5;
+    padding: 50px 20px 20px;
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+  }
+  .footer-content div {
+    min-width: 200px;
+  }
+  .footer-content h4 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  .footer-content p, .footer-content a {
+    color: #cfe3f5;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    transition: 0.2s;
+  }
+  .footer-content a:hover { color: #fff; transform: translateX(4px); }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .botoes a { padding: 12px 22px; font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== TELA DE ABERTURA ===== -->
+  <div id="splash">
+    <img src="logo.png" alt="Logo da Escola">
+  </div>
+
+  <!-- ===== TELA INICIAL (HERO) ===== -->
+  <section class="hero">
+    <img src="logo.png" alt="Logo" class="logo">
+    <h1>Nome da Sua Escola</h1>
+    <p class="slogan">Educação que transforma o futuro</p>
+
+    <div class="botoes">
+      <a href="#conheca">Conheça</a>
+      <a href="#avaliar">Avaliar</a>
+      <a href="#contato">Entrar em Contato</a>
+    </div>
+  </section>
+
+  <!-- ===== INFORMAÇÕES ===== -->
+  <section class="info-section" id="conheca">
+    <h2>Sobre Nossa Escola</h2>
+    <p>
+      Somos uma instituição comprometida com o ensino de qualidade, formando alunos
+      preparados para os desafios do futuro. Contamos com professores dedicados,
+      estrutura moderna e um ambiente acolhedor para o aprendizado.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icone">📚</div>
+        <h3>Ensino de Qualidade</h3>
+        <p>Metodologia atualizada e professores capacitados para o melhor desempenho dos alunos.</p>
+      </div>
+      <div class="card">
+        <div class="icone">🏫</div>
+        <h3>Estrutura Completa</h3>
+        <p>Salas amplas, laboratórios, biblioteca, quadra esportiva e espaços de convivência.</p>
+      </div>
+      <div class="card">
+        <div class="icone">🌟</div>
+        <h3>Atividades Extras</h3>
+        <p>Esportes, música, arte e projetos que desenvolvem talentos e habilidades.</p>
+      </div>
+      <div class="card" id="avaliar">
+        <div class="icone">💬</div>
+        <h3>Avaliação</h3>
+        <p>Nossa comunidade escolar elogia o acolhimento e o ensino. Venha fazer parte!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer id="contato">
+    <div class="footer-content">
+      <div>
+        <h4>📍 Endereço</h4>
+        <p>Rua Exemplo, 123</p>
+        <p>Bairro - Cidade/UF</p>
+      </div>
+      <div>
+        <h4>📞 Contato</h4>
+        <a href="tel:+550000000000">(00) 0000-0000</a>
+        <a href="mailto:contato@escola.com">contato@escola.com</a>
+      </div>
+      <div>
+        <h4>🔗 Redes Sociais</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Nome da Sua Escola. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    // Esconde a tela de abertura após 3 segundos
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('splash').classList.add('hide');
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
