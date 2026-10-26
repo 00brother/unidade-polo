@@ -143,11 +143,12 @@
   }
   @keyframes heroZoom{ from{transform:scale(1.08);} to{transform:scale(1.18);} }
 
+  /* 🔹 Overlay sem degradê preto — apenas azul + toque amarelo */
   .hero-overlay{
     position:absolute;inset:0;z-index:-2;
     background:
-      radial-gradient(110% 90% at 50% 0%, rgba(13,71,161,.55) 0%, rgba(10,13,20,.86) 60%, rgba(10,13,20,.96) 100%),
-      linear-gradient(140deg, rgba(255,193,7,.22), transparent 55%);
+      radial-gradient(110% 90% at 50% 0%, rgba(13,71,161,.45) 0%, rgba(21,101,192,.72) 60%, rgba(30,136,229,.90) 100%),
+      linear-gradient(140deg, rgba(255,193,7,.20), transparent 55%);
   }
   .hero::after{
     content:'';position:absolute;inset:auto 0 0 0;height:170px;z-index:-1;
@@ -169,7 +170,7 @@
 
   .hero-badge{
     display:inline-flex;align-items:center;gap:9px;
-    background:rgba(255,255,255,.10);
+    background:rgba(255,255,255,.12);
     border:1px solid rgba(255,193,7,.55);
     color:var(--amarelo-claro);
     padding:9px 22px;border-radius:100px;
@@ -195,6 +196,7 @@
     line-height:1.05;
     letter-spacing:-.03em;
     color:var(--branco);
+    text-shadow:0 4px 24px rgba(0,0,0,.25);
     margin-bottom:20px;
     animation:subir .9s .12s var(--ease) both;
   }
@@ -206,8 +208,9 @@
   }
   .hero p{
     font-size:clamp(1rem,2vw,1.2rem);
-    color:rgba(255,255,255,.78);
+    color:rgba(255,255,255,.90);
     font-weight:400;
+    text-shadow:0 2px 12px rgba(0,0,0,.20);
     max-width:620px;margin:0 auto 40px;
     animation:subir .9s .24s var(--ease) both;
   }
@@ -231,9 +234,9 @@
     box-shadow:0 22px 46px rgba(255,193,7,.55);
   }
   .btn-ghost{
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.12);
     color:var(--branco);
-    border:1.5px solid rgba(255,255,255,.35);
+    border:1.5px solid rgba(255,255,255,.45);
     backdrop-filter:blur(10px);
   }
   .btn-ghost:hover{
