@@ -143,7 +143,7 @@
   }
   @keyframes heroZoom{ from{transform:scale(1.08);} to{transform:scale(1.18);} }
 
-  /* 🔹 Overlay sem degradê preto — apenas azul + toque amarelo */
+  /* Overlay sem degradê preto — apenas azul + toque amarelo */
   .hero-overlay{
     position:absolute;inset:0;z-index:-2;
     background:
@@ -808,6 +808,16 @@
 </head>
 <body>
 
+  <!-- ================= TRAVA DE SCROLL: SEMPRE ABRIR NO TOPO ================= -->
+  <script>
+    // Desativa a restauração automática de scroll do navegador
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    // Força o topo imediatamente (antes de qualquer render/scroll)
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- ================= TOPO ÚNICO ================= -->
   <header class="topo" id="topo">
     <a href="index.html" class="btn-voltar">
@@ -1114,6 +1124,11 @@
   </div>
 
 <script>
+  /* ---------- Garantia extra: forçar topo após o carregamento ---------- */
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+  });
+
   /* ---------- Header com sombra ao rolar ---------- */
   const topo = document.getElementById('topo');
   window.addEventListener('scroll', () => {
