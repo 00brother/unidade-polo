@@ -573,58 +573,6 @@
   .cta-final .btn-cta svg{transition:transform .4s var(--ease);}
   .cta-final .btn-cta:hover svg{transform:translateX(5px);}
 
-  /* ================= RODAPÉ ================= */
-  footer{
-    background:#070d1c;
-    color:var(--branco);
-    padding:70px 26px 26px;
-    position:relative;
-    overflow:hidden;
-  }
-  footer::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-claro),var(--azul-claro));
-  }
-  .footer-content{
-    display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
-    gap:40px;
-    max-width:1180px;margin:0 auto 50px;
-  }
-  .footer-brand img{width:56px;margin-bottom:18px;}
-  .footer-brand p{
-    font-size:.92rem;line-height:1.75;
-    color:rgba(255,255,255,.58);
-    max-width:280px;
-  }
-  .footer-col h4{
-    font-size:.84rem;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;
-    color:var(--amarelo);
-    margin-bottom:20px;
-  }
-  .footer-col a,
-  .footer-col p{
-    display:block;
-    font-size:.94rem;
-    color:rgba(255,255,255,.65);
-    margin-bottom:11px;
-    transition:.3s var(--ease);
-  }
-  .footer-col a:hover{
-    color:var(--amarelo);
-    transform:translateX(5px);
-  }
-  .footer-bottom{
-    max-width:1180px;margin:0 auto;
-    padding-top:26px;
-    border-top:1px solid rgba(255,255,255,.10);
-    display:flex;flex-wrap:wrap;gap:12px;
-    justify-content:space-between;align-items:center;
-    font-size:.88rem;color:rgba(255,255,255,.45);
-  }
-  .footer-bottom strong{color:var(--amarelo);font-weight:700;}
-
   /* ================= REVEAL ================= */
   .reveal{
     opacity:0;transform:translateY(38px);
@@ -638,7 +586,6 @@
     .topo-logo{width:60px;height:60px;}
     header.topo.scrolled .topo-logo{width:50px;height:50px;}
     .nav-secoes a{padding:9px 16px;font-size:.85rem;}
-    .footer-content{grid-template-columns:1fr 1fr;gap:34px;}
     .sobre-flex{grid-template-columns:1fr;gap:52px;}
     .sobre-img-wrap{max-width:560px;margin:0 auto;}
   }
@@ -692,8 +639,6 @@
     .dif-icone{width:50px;height:50px;font-size:1.35rem;}
 
     .cta-final{padding:70px 20px;}
-    .footer-content{grid-template-columns:1fr;gap:30px;}
-    .footer-bottom{justify-content:center;text-align:center;}
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -908,7 +853,7 @@
       <span class="tag-cta">Matrículas abertas</span>
       <h2>Pronto para fazer parte?</h2>
       <p>Matrículas abertas para o Curso Técnico em Desenvolvimento de Sistemas.</p>
-      <a href="#contato" class="btn-cta">
+      <a href="mailto:contato@unidadepolo.com" class="btn-cta">
         Falar com a Escola
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -917,40 +862,6 @@
       </a>
     </div>
   </section>
-
-  <!-- ================= RODAPÉ ================= -->
-  <footer id="contato">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <img src="logo.png" alt="Logo Unidade Polo">
-        <p>Educação de excelência, ambiente acolhedor e estrutura completa para desenvolver todo o seu potencial.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>📍 Endereço</h4>
-        <p>Rua Exemplo, 123</p>
-        <p>Bairro — Cidade/UF</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>📞 Contato</h4>
-        <a href="tel:+550000000000">(00) 0000-0000</a>
-        <a href="mailto:contato@unidadepolo.com">contato@unidadepolo.com</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>🔗 Redes Sociais</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2025 <strong>Unidade Polo</strong>. Todos os direitos reservados.</span>
-      <span>Feito com dedicação para nossos alunos 💛</span>
-    </div>
-  </footer>
 
 <script>
   window.addEventListener('load', () => {
