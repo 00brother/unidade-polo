@@ -169,12 +169,15 @@
     animation:heroZoomS 20s ease-in-out infinite alternate;
   }
   @keyframes heroZoomS{ from{transform:scale(1.08);} to{transform:scale(1.16);} }
+
+  /* Overlay IGUAL ao da tela inicial (mesmo gradiente azul vibrante) */
   .hero-saiba::after{
     content:'';position:absolute;inset:0;z-index:-1;
     background:
-      linear-gradient(180deg, rgba(10,13,20,.75) 0%, rgba(13,71,161,.70) 100%),
-      radial-gradient(90% 60% at 50% 100%, rgba(255,193,7,.15), transparent 70%);
+      radial-gradient(120% 90% at 50% 40%, rgba(13,71,161,.35) 0%, rgba(21,101,192,.55) 60%, rgba(30,136,229,.70) 100%),
+      linear-gradient(140deg, rgba(255,193,7,.12), transparent 55%);
   }
+
   .hero-saiba .badge{
     display:inline-flex;align-items:center;gap:10px;
     background:rgba(255,255,255,.10);
@@ -1075,4 +1078,4 @@
 </script>
 
 </body>
-</html>s
+</html>
