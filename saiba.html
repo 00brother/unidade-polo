@@ -70,7 +70,7 @@
   /* ================= NAVBAR ================= */
   .navbar{
     position:fixed;top:0;left:0;right:0;
-    height:76px;
+    height:84px;
     background:rgba(10,13,20,.82);
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
@@ -89,12 +89,16 @@
     display:flex;align-items:center;justify-content:space-between;
   }
   .nav-logo{
-    display:flex;align-items:center;gap:12px;
-    color:#fff;font-weight:900;font-size:1.1rem;
+    display:flex;align-items:center;gap:14px;
+    color:#fff;font-weight:900;font-size:1.5rem;
     letter-spacing:.02em;
   }
-  .nav-logo img{width:40px;height:40px;object-fit:contain;}
-  .nav-logo span{color:var(--amarelo);}
+  .nav-logo img{
+    width:56px;height:56px;
+    object-fit:contain;
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));
+  }
+  .nav-logo span{color:#fff;}
 
   .nav-links{
     display:flex;align-items:center;gap:6px;
@@ -129,6 +133,9 @@
   }
 
   @media (max-width:900px){
+    .navbar{height:76px;}
+    .nav-logo{font-size:1.15rem;gap:10px;}
+    .nav-logo img{width:44px;height:44px;}
     .nav-links{
       position:fixed;top:76px;left:0;right:0;
       background:rgba(10,13,20,.98);
@@ -150,7 +157,7 @@
     min-height:74vh;
     display:flex;align-items:center;justify-content:center;
     text-align:center;
-    padding:130px 24px 90px;
+    padding:140px 24px 90px;
     overflow:hidden;
     isolation:isolate;
   }
@@ -623,7 +630,7 @@
   @media (max-width:640px){
     #splash img{width:320px;}
     #splash{padding-bottom:8vh;}
-    .hero-saiba{padding:110px 20px 70px;min-height:70vh;}
+    .hero-saiba{padding:120px 20px 70px;min-height:70vh;}
     .bloco{padding:70px 20px;}
     .tabs-nav{gap:8px;}
     .tab-btn{padding:11px 20px;font-size:.88rem;}
@@ -645,8 +652,8 @@
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="logo.png" alt="Logo">
-        Unidade <span>Polo</span>
+        <img src="logo.png" alt="Logo Unidade Polo">
+        <span>Unidade Polo</span>
       </a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
