@@ -50,44 +50,31 @@
   .navbar{
     position:fixed;top:0;left:0;right:0;
     height:84px;
-    background:rgba(10,13,20,.82);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    background:var(--azul-claro);
+    border-bottom:1px solid rgba(255,255,255,.15);
     z-index:1000;
     display:flex;align-items:center;
     padding:0 26px;
     transition:.4s var(--ease);
   }
   .navbar.solida{
-    background:rgba(10,13,20,.96);
-    box-shadow:0 4px 24px rgba(0,0,0,.25);
+    background:var(--azul-medio);
+    box-shadow:0 4px 24px rgba(13,71,161,.30);
   }
   .nav-inner{
     max-width:1180px;margin:0 auto;width:100%;
-    display:flex;align-items:center;justify-content:space-between;
+    display:flex;align-items:center;justify-content:flex-end;
   }
-  .nav-logo{
-    display:flex;align-items:center;gap:14px;
-    color:#fff;font-weight:900;font-size:1.5rem;
-    letter-spacing:.02em;
-  }
-  .nav-logo img{
-    width:56px;height:56px;
-    object-fit:contain;
-    filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));
-  }
-  .nav-logo span{color:#fff;}
   .nav-links{display:flex;align-items:center;gap:6px;}
   .nav-links a{
-    color:rgba(255,255,255,.78);
+    color:#fff;
     font-size:.94rem;font-weight:500;
     padding:10px 16px;border-radius:100px;
     transition:.3s var(--ease);
   }
   .nav-links a:hover{
     color:var(--amarelo);
-    background:rgba(255,193,7,.10);
+    background:rgba(255,255,255,.15);
   }
   .nav-back{
     display:inline-flex;align-items:center;gap:8px;
@@ -105,11 +92,9 @@
 
   @media (max-width:900px){
     .navbar{height:76px;}
-    .nav-logo{font-size:1.15rem;gap:10px;}
-    .nav-logo img{width:44px;height:44px;}
     .nav-links{
       position:fixed;top:76px;left:0;right:0;
-      background:rgba(10,13,20,.98);
+      background:var(--azul-medio);
       flex-direction:column;align-items:stretch;
       padding:16px 20px 24px;gap:4px;
       border-bottom:2px solid var(--amarelo);
@@ -552,11 +537,6 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="logo.png" alt="Logo Unidade Polo">
-        <span>Unidade Polo</span>
-      </a>
-
       <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
 
       <div class="nav-links" id="navLinks">
