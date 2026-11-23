@@ -8,960 +8,247 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
---navy:#142b49;
---blue:#1e5680;
---gold:#f2bd4b;
---cream:#f7f5ef;
---ink:#253247;
---muted:#687587;
-}
-
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-
-body{
-font-family:Roboto,Arial,sans-serif;
-color:var(--ink);
-background:#fff;
-line-height:1.65;
-}
-
-a{color:inherit;text-decoration:none}
-
-.navbar{
-position:fixed;
-z-index:20;
-top:0;
-left:0;
-width:100%;
-transition:.25s;
-background:rgba(15,39,66,.22);
-color:#fff;
-}
-
-.navbar.solida{
-background:rgba(16,39,65,.97);
-box-shadow:0 8px 24px #0b20352b;
-}
-
-.nav-inner{
-max-width:1180px;
-margin:auto;
-padding:14px 24px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.brand-mini{
-display:flex;
-align-items:center;
-gap:9px;
-font-weight:900;
-}
-
-.mini-logo{
-width:34px;
-height:34px;
-object-fit:contain;
-}
-
-.nav-links{
-display:flex;
-align-items:center;
-gap:30px;
-}
-
-.nav-links a{
-font-size:.9rem;
-font-weight:500;
-opacity:.9;
-transition:.2s;
-}
-
-.nav-links a:hover{color:var(--gold)}
-
-.nav-back{
-display:flex;
-align-items:center;
-gap:8px;
-}
-
-.nav-toggle{
-display:none;
-border:0;
-background:transparent;
-color:#fff;
-font-size:1.7rem;
-cursor:pointer;
-}
-
-.hero-saiba{
-min-height:440px;
-padding:130px 24px 90px;
-display:grid;
-place-items:center;
-text-align:center;
-position:relative;
-overflow:hidden;
-color:#fff;
-background:linear-gradient(125deg,#102944,#1e5680 62%,#327b91);
-}
-
-.hero-saiba:before,
-.hero-saiba:after{
-content:"";
-position:absolute;
-border:1px solid #ffffff20;
-border-radius:50%;
-width:440px;
-height:440px;
-}
-
-.hero-saiba:before{
-left:-190px;
-bottom:-270px;
-}
-
-.hero-saiba:after{
-right:-160px;
-top:-270px;
-width:560px;
-height:560px;
-}
-
-.hero-content{
-position:relative;
-z-index:1;
-max-width:720px;
-}
-
-.badge,.tag{
-display:inline-block;
-color:#f6c85f;
-font-size:.76rem;
-font-weight:900;
-letter-spacing:2px;
-text-transform:uppercase;
-}
-
-.hero-saiba h1{
-font-size:clamp(2.7rem,7vw,5rem);
-line-height:1.08;
-margin:18px 0;
-font-weight:900;
-letter-spacing:-2px;
-}
-
-.hero-saiba h1 em{
-font-style:normal;
-color:var(--gold);
-}
-
-.hero-saiba p{
-font-size:1.1rem;
-color:#e4edf4;
-}
-
-.hero-link{
-display:inline-flex;
-gap:12px;
-align-items:center;
-margin-top:28px;
-padding:11px 20px;
-border:1px solid #ffffff70;
-border-radius:30px;
-font-weight:700;
-transition:.2s;
-}
-
-.hero-link:hover{
-background:#fff;
-color:var(--navy);
-}
-
-.hero-decoration{
-position:absolute;
-right:14%;
-bottom:14%;
-font-size:5rem;
-color:#ffffff19;
-}
-
-.tabs-wrap{
-padding:88px 24px 100px;
-background:var(--cream);
-}
-
-.bloco{
-max-width:1120px;
-margin:auto;
-}
-
-.cabecalho{
-text-align:center;
-margin-bottom:34px;
-}
-
-.cabecalho h2{
-font-size:clamp(2rem,4vw,3rem);
-line-height:1.2;
-color:var(--navy);
-margin:8px 0 16px;
-font-weight:900;
-}
-
-.cabecalho h2 span,
-.painel-txt h3 span{
-color:#2c7892;
-}
-
-.linha{
-height:4px;
-width:66px;
-background:var(--gold);
-margin:0 auto 16px;
-border-radius:5px;
-}
-
-.section-intro{color:var(--muted)}
-
-.tabs-nav{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin:0 auto 28px;
-}
-
-.tab-btn{
-border:1px solid #dce2e5;
-background:#fff;
-color:#435166;
-border-radius:30px;
-padding:12px 18px;
-font:700 .9rem Roboto,Arial,sans-serif;
-cursor:pointer;
-transition:.2s;
-}
-
-.tab-btn:hover{
-border-color:#2c7892;
-transform:translateY(-2px);
-}
-
-.tab-btn.ativo{
-background:var(--navy);
-border-color:var(--navy);
-color:#fff;
-box-shadow:0 7px 18px #142b4930;
-}
-
-.tab-painel{animation:appear .35s ease}
-.tab-painel[hidden]{display:none}
-
-.painel-card{
-display:grid;
-grid-template-columns:1.05fr .95fr;
-min-height:370px;
-background:#fff;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 18px 45px #1c385012;
-}
-
-.painel-txt{
-padding:clamp(28px,5vw,58px);
-align-self:center;
-}
-
-.painel-numero{
-font-size:.7rem;
-letter-spacing:1.8px;
-font-weight:900;
-color:#b28b37;
-}
-
-.painel-txt h3{
-font-size:clamp(1.8rem,3vw,2.6rem);
-line-height:1.2;
-color:var(--navy);
-margin:10px 0 16px;
-font-weight:900;
-}
-
-.painel-txt p{
-color:#667386;
-margin-bottom:18px;
-}
-
-.painel-txt ul{
-list-style:none;
-display:grid;
-gap:9px;
-}
-
-.painel-txt li{
-position:relative;
-padding-left:25px;
-font-size:.94rem;
-color:#34445a;
-}
-
-.painel-txt li:before{
-content:"✓";
-position:absolute;
-left:0;
-color:#27829a;
-font-weight:900;
-}
-
-.painel-img{
-min-height:350px;
-background:#dce8e8;
-}
-
-.painel-img img{
-width:100%;
-height:100%;
-min-height:350px;
-object-fit:cover;
-display:block;
-}
-
-.cta-saiba{
-padding:82px 24px;
-text-align:center;
-color:#fff;
-background:linear-gradient(120deg,#142b49,#205e7d);
-}
-
-.cta-content{
-max-width:760px;
-margin:auto;
-}
-
-.tag-light{color:var(--gold)}
-
-.cta-saiba h2{
-font-size:clamp(2.2rem,5vw,3.5rem);
-line-height:1.15;
-margin:10px 0;
-}
-
-.cta-saiba p{
-color:#d9e5ed;
-font-size:1.05rem;
-}
-
-.btns{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:13px;
-margin-top:28px;
-}
-
-.btn-cta-p,.btn-cta-g{
-display:inline-flex;
-align-items:center;
-gap:14px;
-padding:13px 21px;
-border-radius:30px;
-font-weight:700;
-transition:.2s;
-}
-
-.btn-cta-p{
-background:var(--gold);
-color:#1c2e42;
-}
-
-.btn-cta-g{
-border:1px solid #ffffff80;
-color:#fff;
-}
-
-.btn-cta-p:hover,.btn-cta-g:hover{
-transform:translateY(-3px);
-}
-
-footer{
-background:#0e2035;
-color:#fff;
-padding:55px 24px 0;
-}
-
-.footer-content{
-max-width:1120px;
-margin:auto;
-display:grid;
-grid-template-columns:2fr 1fr 1.4fr;
-gap:50px;
-padding-bottom:40px;
-}
-
-.footer-brand img{
-width:62px;
-height:62px;
-object-fit:contain;
-margin-bottom:12px;
-}
-
-.footer-brand p{
-max-width:360px;
-color:#aebdca;
-font-size:.92rem;
-}
-
-.footer-col{
-display:flex;
-flex-direction:column;
-gap:7px;
-}
-
-.footer-col h4{
-margin-bottom:8px;
-color:#f5c65b;
-}
-
-.footer-col p,.footer-col a{
-font-size:.9rem;
-color:#c2ccd5;
-}
-
-.footer-col a:hover{color:var(--gold)}
-
-.footer-bottom{
-max-width:1120px;
-margin:auto;
-border-top:1px solid #ffffff20;
-padding:18px 0;
-display:flex;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
-color:#9cabb9;
-font-size:.8rem;
-}
-
-.footer-bottom strong{color:#fff}
-
-.reveal{
-opacity:0;
-transform:translateY(22px);
-transition:opacity .65s ease,transform .65s ease;
-}
-
-.reveal.visivel{
-opacity:1;
-transform:translateY(0);
-}
-
-@keyframes appear{
-from{opacity:0;transform:translateY(8px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-@media(max-width:760px){
-
-.nav-inner{padding:12px 18px}
-
-.nav-toggle{display:block}
-
-.nav-links{
-display:none;
-position:absolute;
-top:100%;
-left:0;
-right:0;
-background:#102944;
-padding:18px 24px 24px;
-flex-direction:column;
-align-items:flex-start;
-gap:17px;
-box-shadow:0 12px 20px #0002;
-}
-
-.nav-links.aberto{display:flex}
-
-.hero-saiba{
-min-height:400px;
-padding-top:115px;
-}
-
-.tabs-wrap{padding:65px 16px 72px}
-
-.tabs-nav{gap:8px}
-
-.tab-btn{
-padding:10px 13px;
-font-size:.82rem;
-}
-
-.painel-card{grid-template-columns:1fr}
-
-.painel-img{
-order:-1;
-min-height:230px;
-max-height:260px;
-}
-
-.painel-img img{
-min-height:230px;
-max-height:260px;
-}
-
-.footer-content{
-grid-template-columns:1fr 1fr;
-gap:30px;
-}
-
-.footer-brand{grid-column:1/-1}
-}
-
-@media(max-width:440px){
-
-.footer-content{grid-template-columns:1fr}
-.footer-brand{grid-column:auto}
-
-.hero-saiba h1{letter-spacing:-1px}
-
-.tab-btn{
-font-size:.78rem;
-padding:9px 11px;
-}
-}
-
-@media(prefers-reduced-motion:reduce){
-
-html{scroll-behavior:auto}
-
-*,*:before,*:after{
-animation-duration:.01ms!important;
-transition-duration:.01ms!important;
-}
-
-.reveal{
-opacity:1;
-transform:none;
-}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<nav class="navbar" id="navbar">
-<div class="nav-inner">
-
-<a class="brand-mini" href="saiba.html">
-<img src="logo.png" alt="" class="mini-logo">
-Unidade Polo
-</a>
-
-<button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
-☰
-</button>
-
-<div class="nav-links" id="navLinks">
-<a href="areas.html">Áreas da Escola</a>
-<a href="conheca.html">Conheça</a>
-<a href="galeria.html">Galeria</a>
-<a href="curiosidades.html">Curiosidades</a>
-<a href="saiba.html" class="nav-back">← Voltar</a>
-</div>
-
-</div>
-</nav>
-
-<header class="hero-saiba">
-
-<div class="hero-content reveal">
-<span class="badge">Detalhes</span>
-
-<h1>Toque para <em>Explorar</em></h1>
-
-<p>Escolha uma área e descubra tudo o que a Unidade Polo oferece.</p>
-
-<a href="#detalhes" class="hero-link">
-Explorar espaços ↓
-</a>
-</div>
-
-<div class="hero-decoration">✦</div>
-
-</header>
-
-<main>
-
-<section class="tabs-wrap" id="detalhes">
-
-<div class="bloco">
-
-<div class="cabecalho reveal">
-
-<span class="tag">Detalhes Interativos</span>
-
-<h2>Toque para <span>Explorar</span></h2>
-
-<div class="linha"></div>
-
-<p class="section-intro">
-Conheça alguns dos ambientes e serviços que fazem parte da nossa escola.
-</p>
-
-</div>
-
-<div class="tabs-nav reveal" role="tablist">
-
-<button class="tab-btn ativo" data-tab="secretaria">
-📋 Secretaria
-</button>
-
-<button class="tab-btn" data-tab="biblioteca">
-📚 Biblioteca
-</button>
-
-<button class="tab-btn" data-tab="laboratorios">
-💻 Laboratórios
-</button>
-
-<button class="tab-btn" data-tab="cantina">
-🍎 Cantina
-</button>
-
-<button class="tab-btn" data-tab="esportes">
-⚽ Esportes
-</button>
-
-<button class="tab-btn" data-tab="coordenacao">
-🎓 Coordenação
-</button>
-
-</div>
-
-<div class="tab-painel ativo" data-painel="secretaria">
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">01 / ADMINISTRAÇÃO</span>
-
-<h3>Secretaria <span>Escolar</span></h3>
-
-<p>O coração administrativo da escola. Atendemos alunos, responsáveis e a comunidade com serviços rápidos e acolhedores.</p>
-
-<ul>
-<li>Matrículas e rematrículas</li>
-<li>Emissão de declarações e históricos</li>
-<li>Atendimento aos responsáveis</li>
-<li>Documentação e transferências</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Secretaria da escola">
-</div>
-
-</article>
-</div>
-
-<div class="tab-painel" data-painel="biblioteca" hidden>
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">02 / LEITURA E PESQUISA</span>
-
-<h3>Biblioteca <span>Ampliada</span></h3>
-
-<p>Um espaço silencioso e acolhedor para estudo, pesquisa e leitura prazerosa. Mais de 5.000 títulos disponíveis para alunos e professores.</p>
-
-<ul>
-<li>Acervo com mais de 5.000 títulos</li>
-<li>Ambiente climatizado e silencioso</li>
-<li>Computadores para pesquisa</li>
-<li>Clube de leitura semanal</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Biblioteca da escola">
-</div>
-
-</article>
-</div>
-
-<div class="tab-painel" data-painel="laboratorios" hidden>
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">03 / TECNOLOGIA E CIÊNCIA</span>
-
-<h3>Laboratórios <span>Modernos</span></h3>
-
-<p>Equipamentos de ponta para aulas práticas de informática, ciências e robótica. É aqui que o aprendizado ganha vida.</p>
-
-<ul>
-<li>40 computadores de última geração</li>
-<li>Kit completo de robótica educacional</li>
-<li>Bancadas para experimentos de ciências</li>
-<li>Internet de alta velocidade</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Laboratórios da escola">
-</div>
-
-</article>
-</div>
-
-<div class="tab-painel" data-painel="cantina" hidden>
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">04 / ALIMENTAÇÃO</span>
-
-<h3>Cantina <span>Saudável</span></h3>
-
-<p>Cardápio balanceado e variado, elaborado por nutricionistas para garantir uma alimentação saudável e saborosa todos os dias.</p>
-
-<ul>
-<li>Merenda gratuita e balanceada</li>
-<li>Cardápio revisado por nutricionista</li>
-<li>Opções para restrições alimentares</li>
-<li>Ambiente limpo e acolhedor</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Cantina da escola">
-</div>
-
-</article>
-</div>
-
-<div class="tab-painel" data-painel="esportes" hidden>
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">05 / MOVIMENTO E SAÚDE</span>
-
-<h3>Quadra &amp; <span>Esportes</span></h3>
-
-<p>Esporte é parte da formação. Nossa quadra coberta recebe aulas de educação física, treinos e campeonatos interescolares.</p>
-
-<ul>
-<li>Quadra coberta e poliesportiva</li>
-<li>Aulas de educação física semanais</li>
-<li>Times de futsal, vôlei e basquete</li>
-<li>Campeonatos interescolares</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Quadra da escola">
-</div>
-
-</article>
-</div>
-
-<div class="tab-painel" data-painel="coordenacao" hidden>
-<article class="painel-card">
-
-<div class="painel-txt">
-<span class="painel-numero">06 / ACOMPANHAMENTO</span>
-
-<h3>Coordenação <span>Pedagógica</span></h3>
-
-<p>Equipe dedicada a acompanhar o desenvolvimento de cada aluno, apoiando famílias e professores no processo de ensino.</p>
-
-<ul>
-<li>Orientação pedagógica individualizada</li>
-<li>Reuniões periódicas com responsáveis</li>
-<li>Apoio psicopedagógico</li>
-<li>Projetos de inclusão e acolhimento</li>
-</ul>
-</div>
-
-<div class="painel-img">
-<img src="escola.jpg" alt="Coordenação da escola">
-</div>
-
-</article>
-</div>
-
-</div>
-</section>
-
-<section class="cta-saiba">
-
-<div class="cta-content reveal">
-
-<span class="tag tag-light">Venha conhecer</span>
-
-<h2>Gostou do que viu?</h2>
-
-<p>Explore outras seções ou agende uma visita para conhecer pessoalmente.</p>
-
-<div class="btns">
-
-<a href="mailto:contato@unidadepolo.com" class="btn-cta-p">
-Agendar visita →
-</a>
-
-<a href="saiba.html" class="btn-cta-g">
-← Voltar ao conteúdo
-</a>
-
-</div>
-</div>
-</section>
-
-</main>
-
-<footer>
-
-<div class="footer-content">
-
-<div class="footer-brand">
-<img src="logo.png" alt="Logo Unidade Polo">
-
-<p>
-Educação de excelência, ambiente acolhedor e estrutura completa para desenvolver todo o seu potencial.
-</p>
-</div>
-
-<div class="footer-col">
-<h4>📍 Endereço</h4>
-<p>Rua Exemplo, 123</p>
-<p>Bairro — Cidade/UF</p>
-<p>CEP: 00000-000</p>
-</div>
-
-<div class="footer-col">
-<h4>📞 Contato</h4>
-<a href="tel:+550000000000">(00) 0000-0000</a>
-<a href="mailto:contato@unidadepolo.com">contato@unidadepolo.com</a>
-<a href="mailto:secretaria@unidadepolo.com">secretaria@unidadepolo.com</a>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-<span>© 2026 <strong>Unidade Polo</strong>. Todos os direitos reservados.</span>
-<span>Feito com dedicação para nossos alunos 💛</span>
-</div>
-
-</footer>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="areas.html">Áreas da Escola</a>
+        <a href="conheca.html">Conheça</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="curiosidades.html">Curiosidades</a>
+        <a href="saiba.html" class="nav-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Voltar
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-saiba" style="min-height:48vh;">
+    <div>
+      <span class="badge">Detalhes</span>
+      <h1>Toque para <em>Explorar</em></h1>
+      <p>Escolha uma área e descubra tudo o que a Unidade Polo oferece.</p>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <div class="tabs-wrap" id="detalhes">
+    <div class="bloco">
+      <div class="cabecalho reveal">
+        <span class="tag">Detalhes Interativos</span>
+        <h2>Toque para <span>Explorar</span></h2>
+        <div class="linha"></div>
+      </div>
+
+      <div class="tabs-nav reveal">
+        <button class="tab-btn ativo" data-tab="secretaria">📋 Secretaria</button>
+        <button class="tab-btn" data-tab="biblioteca">📚 Biblioteca</button>
+        <button class="tab-btn" data-tab="laboratorios">💻 Laboratórios</button>
+        <button class="tab-btn" data-tab="cantina">🍎 Cantina</button>
+        <button class="tab-btn" data-tab="esportes">⚽ Esportes</button>
+        <button class="tab-btn" data-tab="coordenacao">🎓 Coordenação</button>
+      </div>
+
+      <div class="tab-painel ativo" data-painel="secretaria">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Secretaria <span>Escolar</span></h3>
+            <p>O coração administrativo da escola. Atendemos alunos, responsáveis e a comunidade com serviços rápidos e acolhedores.</p>
+            <ul>
+              <li>Matrículas e rematrículas</li>
+              <li>Emissão de declarações e históricos</li>
+              <li>Atendimento aos responsáveis</li>
+              <li>Documentação e transferências</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Secretaria"></div>
+        </div>
+      </div>
+
+      <div class="tab-painel" data-painel="biblioteca">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Biblioteca <span>Ampliada</span></h3>
+            <p>Um espaço silencioso e acolhedor para estudo, pesquisa e leitura prazerosa. Mais de 5.000 títulos disponíveis para alunos e professores.</p>
+            <ul>
+              <li>Acervo com mais de 5.000 títulos</li>
+              <li>Ambiente climatizado e silencioso</li>
+              <li>Computadores para pesquisa</li>
+              <li>Clube de leitura semanal</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Biblioteca"></div>
+        </div>
+      </div>
+
+      <div class="tab-painel" data-painel="laboratorios">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Laboratórios <span>Modernos</span></h3>
+            <p>Equipamentos de ponta para aulas práticas de informática, ciências e robótica. É aqui que o aprendizado ganha vida.</p>
+            <ul>
+              <li>40 computadores de última geração</li>
+              <li>Kit completo de robótica educacional</li>
+              <li>Bancadas para experimentos de ciências</li>
+              <li>Internet de alta velocidade</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Laboratórios"></div>
+        </div>
+      </div>
+
+      <div class="tab-painel" data-painel="cantina">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Cantina <span>Saudável</span></h3>
+            <p>Cardápio balanceado e variado, elaborado por nutricionistas para garantir uma alimentação saudável e saborosa todos os dias.</p>
+            <ul>
+              <li>Merenda gratuita e balanceada</li>
+              <li>Cardápio revisado por nutricionista</li>
+              <li>Opções para restrições alimentares</li>
+              <li>Ambiente limpo e acolhedor</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Cantina"></div>
+        </div>
+      </div>
+
+      <div class="tab-painel" data-painel="esportes">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Quadra &amp; <span>Esportes</span></h3>
+            <p>Esporte é parte da formação. Nossa quadra coberta recebe aulas de educação física, treinos e campeonatos interescolares.</p>
+            <ul>
+              <li>Quadra coberta e poliesportiva</li>
+              <li>Aulas de educação física semanais</li>
+              <li>Times de futsal, vôlei e basquete</li>
+              <li>Campeonatos interescolares</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Quadra"></div>
+        </div>
+      </div>
+
+      <div class="tab-painel" data-painel="coordenacao">
+        <div class="painel-card">
+          <div class="painel-txt">
+            <h3>Coordenação <span>Pedagógica</span></h3>
+            <p>Equipe dedicada a acompanhar o desenvolvimento de cada aluno, apoiando famílias e professores no processo de ensino.</p>
+            <ul>
+              <li>Orientação pedagógica individualizada</li>
+              <li>Reuniões periódicas com responsáveis</li>
+              <li>Apoio psicopedagógico</li>
+              <li>Projetos de inclusão e acolhimento</li>
+            </ul>
+          </div>
+          <div class="painel-img"><img src="escola.jpg" alt="Coordenação"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-saiba">
+    <div class="reveal">
+      <h2>Gostou do que viu?</h2>
+      <p>Explore outras seções ou agende uma visita para conhecer pessoalmente.</p>
+      <div class="btns">
+        <a href="mailto:contato@unidadepolo.com" class="btn-cta-p">
+          Agendar visita
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="saiba.html" class="btn-cta-g">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Voltar ao conteúdo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Logo Unidade Polo">
+        <p>Educação de excelência, ambiente acolhedor e estrutura completa para desenvolver todo o seu potencial.</p>
+      </div>
+      <div class="footer-col">
+        <h4>📍 Endereço</h4>
+        <p>Rua Exemplo, 123</p>
+        <p>Bairro — Cidade/UF</p>
+        <p>CEP: 00000-000</p>
+      </div>
+      <div class="footer-col">
+        <h4>📞 Contato</h4>
+        <a href="tel:+550000000000">(00) 0000-0000</a>
+        <a href="mailto:contato@unidadepolo.com">contato@unidadepolo.com</a>
+        <a href="mailto:secretaria@unidadepolo.com">secretaria@unidadepolo.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 <strong>Unidade Polo</strong>. Todos os direitos reservados.</span>
+      <span>Feito com dedicação para nossos alunos 💛</span>
+    </div>
+  </footer>
 
 <script>
-const navbar = document.getElementById("navbar");
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('solida', window.scrollY > 40);
+  }, { passive: true });
 
-function atualizarNavbar(){
-navbar.classList.toggle("solida",window.scrollY > 40);
-}
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('aberto'));
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('aberto'));
+  });
 
-atualizarNavbar();
+  const io = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visivel');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6) * 70 + 'ms';
+    io.observe(el);
+  });
 
-window.addEventListener("scroll",atualizarNavbar,{passive:true});
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPaineis = document.querySelectorAll('.tab-painel');
 
-navToggle.addEventListener("click",()=>{
-const aberto = navLinks.classList.toggle("aberto");
+  function ativarTab(nome){
+    tabBtns.forEach(b => b.classList.toggle('ativo', b.dataset.tab === nome));
+    tabPaineis.forEach(p => p.classList.toggle('ativo', p.dataset.painel === nome));
+  }
 
-navToggle.setAttribute("aria-expanded",String(aberto));
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => ativarTab(btn.dataset.tab));
+  });
 
-navToggle.setAttribute(
-"aria-label",
-aberto ? "Fechar menu" : "Abrir menu"
-);
-});
-
-navLinks.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",()=>{
-navLinks.classList.remove("aberto");
-navToggle.setAttribute("aria-expanded","false");
-});
-});
-
-const tabBtns = document.querySelectorAll(".tab-btn");
-const paineis = document.querySelectorAll(".tab-painel");
-
-function ativarTab(nome){
-
-tabBtns.forEach(btn=>{
-const ativo = btn.dataset.tab === nome;
-
-btn.classList.toggle("ativo",ativo);
-btn.setAttribute("aria-selected",String(ativo));
-});
-
-paineis.forEach(painel=>{
-const ativo = painel.dataset.painel === nome;
-
-painel.classList.toggle("ativo",ativo);
-painel.hidden = !ativo;
-});
-
-}
-
-tabBtns.forEach(btn=>{
-btn.addEventListener("click",()=>{
-ativarTab(btn.dataset.tab);
-
-history.replaceState(
-null,
-"",
-"#"+btn.dataset.tab
-);
-});
-});
-
-const hash = location.hash.replace("#","");
-
-if(hash && document.querySelector(
-'.tab-btn[data-tab="'+hash+'"]'
-)){
-ativarTab(hash);
-}
-
-const elementos = document.querySelectorAll(".reveal");
-
-if("IntersectionObserver" in window){
-
-const observer = new IntersectionObserver((entradas,io)=>{
-
-entradas.forEach(entrada=>{
-
-if(!entrada.isIntersecting)return;
-
-entrada.target.classList.add("visivel");
-
-io.unobserve(entrada.target);
-
-});
-
-},{threshold:.12,rootMargin:"0px 0px -40px 0px"});
-
-elementos.forEach((el,i)=>{
-el.style.transitionDelay = (i%6)*70+"ms";
-observer.observe(el);
-});
-
-}else{
-
-elementos.forEach(el=>{
-el.classList.add("visivel");
-});
-
-}
+  // Abre a aba correta se vier de areas.html (ex: conheca.html#biblioteca)
+  const hash = location.hash.replace('#', '');
+  if (hash && document.querySelector(`.tab-btn[data-tab="${hash}"]`)) {
+    ativarTab(hash);
+  }
 </script>
 
 </body>
