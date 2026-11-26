@@ -103,12 +103,10 @@
   }
   .hero-bg .slide.active{opacity:1;}
 
-  /* Overlay mais leve — sem degradê branco na frente */
+  /* Overlay sólido, sem gradiente */
   .hero-overlay{
     position:absolute;inset:0;z-index:-2;
-    background:
-      radial-gradient(120% 90% at 50% 40%, rgba(13,71,161,.35) 0%, rgba(21,101,192,.55) 60%, rgba(30,136,229,.70) 100%),
-      linear-gradient(140deg, rgba(255,193,7,.12), transparent 55%);
+    background:rgba(13,71,161,.55);
   }
 
   .blob{
@@ -156,11 +154,10 @@
     margin-bottom:28px;
     animation:subir .9s .12s var(--ease) both;
   }
+  /* Destaque com cor sólida (antes era gradiente em texto) */
   .hero h1 em{
     font-style:normal;
-    background:linear-gradient(100deg,var(--amarelo) 0%,var(--amarelo-claro) 45%,#fff3c4 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:var(--amarelo);
   }
   .hero p{
     font-size:clamp(1.25rem,2.8vw,1.65rem);
@@ -243,7 +240,6 @@
   }
   .scroll-indicator.esconder{opacity:0;pointer-events:none;}
 
-  /* Só mostra no mobile e tablet — no desktop fica opcional */
   @media (min-width:641px){
     .scroll-indicator{display:none;}
   }
@@ -269,15 +265,17 @@
     color:var(--preto);
   }
   .cabecalho h2 span{color:var(--azul-medio);}
+  /* Linha decorativa: cor sólida (antes era gradiente) */
   .cabecalho .linha{
     width:66px;height:5px;border-radius:99px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-escuro));
+    background:var(--amarelo);
     margin:20px auto 0;
   }
 
   /* ================= SOBRE ================= */
+  /* Fundo sólido (antes era gradiente) */
   .sobre-wrap{
-    background:linear-gradient(180deg,var(--cinza-claro) 0%, #fff 100%);
+    background:var(--cinza-claro);
     border-top:1px solid var(--borda);
     border-bottom:1px solid var(--borda);
   }
@@ -315,9 +313,9 @@
     font-weight:700;line-height:1.2;letter-spacing:-.01em;
     margin-bottom:20px;
   }
+  /* Destaque inferior sem gradiente (usa box-shadow sólido) */
   .sobre-txt h3 span{
-    position:relative;
-    background:linear-gradient(180deg,transparent 62%, var(--amarelo) 62%);
+    box-shadow:inset 0 -0.35em 0 var(--amarelo);
     padding:0 3px;
   }
   .sobre-txt p{
@@ -326,10 +324,11 @@
     margin-bottom:16px;
   }
 
+  /* Fundo sólido (antes era gradiente) */
   .destaque-curso{
     position:relative;overflow:hidden;
     margin-top:30px;
-    background:linear-gradient(135deg,var(--azul) 0%, var(--azul-medio) 55%, var(--azul-claro) 100%);
+    background:var(--azul);
     color:#fff;
     padding:28px 30px;
     border-radius:var(--r-md);
@@ -357,9 +356,10 @@
   }
 
   /* ================= NÚMEROS ================= */
+  /* Fundo sólido (antes era gradiente) */
   .numeros-wrap{
     position:relative;overflow:hidden;
-    background:linear-gradient(150deg,#08152e 0%, var(--azul) 55%, var(--azul-medio) 100%);
+    background:var(--azul);
     padding:100px 0;
     isolation:isolate;
   }
@@ -378,7 +378,7 @@
     color:var(--amarelo-claro);
     background:rgba(255,193,7,.14);
   }
-  .numeros-wrap .cabecalho .linha{background:linear-gradient(90deg,var(--amarelo),#fff3c4);}
+  .numeros-wrap .cabecalho .linha{background:var(--amarelo);}
 
   .numeros-grid{
     display:grid;
@@ -394,9 +394,10 @@
     backdrop-filter:blur(12px);
     transition:.45s var(--ease);
   }
+  /* Barra superior: cor sólida (antes era gradiente) */
   .numero-card::before{
     content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-claro));
+    background:var(--amarelo);
     transform:scaleX(0);transform-origin:left;
     transition:transform .5s var(--ease);
   }
@@ -407,12 +408,11 @@
     box-shadow:0 26px 50px rgba(0,0,0,.35);
   }
   .numero-card:hover::before{transform:scaleX(1);}
+  /* Números: cor sólida (antes era gradiente em texto) */
   .numero-card .num{
     font-size:clamp(2.4rem,5vw,3.2rem);
     font-weight:900;line-height:1.05;
-    background:linear-gradient(160deg,var(--amarelo) 0%, var(--amarelo-claro) 60%, #fff6d0 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:var(--amarelo);
     margin-bottom:12px;
     letter-spacing:-.02em;
   }
@@ -454,9 +454,10 @@
     height:14px;border-radius:99px;
     background:#eef1f6;overflow:hidden;
   }
+  /* Barra: cor sólida (antes era gradiente) */
   .barra-preenchida{
     height:100%;width:0;border-radius:99px;
-    background:linear-gradient(90deg,var(--amarelo-escuro),var(--amarelo),var(--amarelo-claro));
+    background:var(--amarelo);
     box-shadow:0 0 14px rgba(255,193,7,.6);
     transition:width 1.5s var(--ease);
   }
@@ -476,9 +477,10 @@
     padding:30px 28px;
     transition:.45s var(--ease);
   }
+  /* Barra lateral: cor sólida (antes era gradiente) */
   .diferencial::before{
     content:'';position:absolute;left:0;top:0;bottom:0;width:5px;
-    background:linear-gradient(180deg,var(--amarelo),var(--amarelo-escuro));
+    background:var(--amarelo);
     transform:scaleY(0);transform-origin:top;
     transition:transform .45s var(--ease);
   }
@@ -488,16 +490,17 @@
     box-shadow:var(--sh-md);
   }
   .diferencial:hover::before{transform:scaleY(1);}
+  /* Ícone: fundo sólido (antes era gradiente) */
   .dif-icone{
     flex-shrink:0;
     width:58px;height:58px;border-radius:16px;
     display:grid;place-items:center;
     font-size:1.6rem;
-    background:linear-gradient(140deg,rgba(255,193,7,.22),rgba(255,213,79,.38));
+    background:rgba(255,193,7,.3);
     transition:.45s var(--ease);
   }
   .diferencial:hover .dif-icone{
-    background:linear-gradient(140deg,var(--amarelo),var(--amarelo-claro));
+    background:var(--amarelo);
     transform:rotate(-8deg) scale(1.06);
   }
   .diferencial h4{
@@ -510,9 +513,10 @@
   }
 
   /* ================= CTA ================= */
+  /* Fundo sólido (antes era gradiente) */
   .cta-final{
     position:relative;overflow:hidden;
-    background:linear-gradient(135deg,var(--amarelo) 0%, var(--amarelo-claro) 50%, var(--amarelo) 100%);
+    background:var(--amarelo);
     padding:100px 26px;
     text-align:center;
     isolation:isolate;
@@ -567,9 +571,10 @@
     position:relative;
     overflow:hidden;
   }
+  /* Linha superior: cor sólida (antes era gradiente) */
   footer::before{
     content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-claro),var(--azul-claro));
+    background:var(--amarelo);
   }
 
   .footer-content{
