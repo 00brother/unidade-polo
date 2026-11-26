@@ -5,52 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conheça a Unidade Polo</title>
 
+<!-- Fontes: Montserrat (Títulos, parecida com o panfleto) e Roboto (Textos) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --amarelo:#ffc107;
-    --amarelo-claro:#ffd54f;
-    --amarelo-escuro:#ffb300;
-    --azul:#0d47a1;
-    --azul-medio:#1565c0;
-    --azul-claro:#1e88e5;
-    --preto:#0a0d14;
-    --preto-suave:#1a1f2b;
-    --branco:#ffffff;
-    --cinza:#6b7280;
-    --cinza-claro:#f4f6fa;
-    --borda:#e8ecf3;
+    /* Cores baseadas no panfleto */
+    --azul: #1554a6;       /* Azul institucional do papel */
+    --azul-escuro: #0d3b7a;
+    --azul-claro: #e8f0fc;
+    
+    --amarelo: #f6b71e;    /* Amarelo dourado do papel */
+    --amarelo-claro: #ffd154;
+    
+    --branco: #ffffff;
+    --cinza-texto: #4a5568;
+    --cinza-claro: #f8f9fa;
+    
+    /* Fontes */
+    --fonte-titulo: 'Montserrat', sans-serif;
+    --fonte-texto: 'Roboto', sans-serif;
 
-    --fonte:'Roboto','Segoe UI',Arial,sans-serif;
+    --r-sm: 12px;
+    --r-md: 20px;
+    --r-lg: 30px;
 
-    --r-sm:14px;
-    --r-md:22px;
-    --r-lg:32px;
+    --sh-sm: 0 4px 15px rgba(21, 84, 166, 0.08);
+    --sh-md: 0 15px 40px rgba(21, 84, 166, 0.12);
+    --sh-lg: 0 25px 60px rgba(21, 84, 166, 0.18);
 
-    --sh-sm:0 4px 18px rgba(13,71,161,.08);
-    --sh-md:0 18px 45px rgba(13,71,161,.14);
-    --sh-lg:0 35px 80px rgba(13,71,161,.22);
-
-    --ease:cubic-bezier(.22,.7,.25,1);
+    --ease: cubic-bezier(.22,.7,.25,1);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;scroll-padding-top:24px;}
   body{
-    font-family:var(--fonte);
+    font-family:var(--fonte-texto);
     background:var(--branco);
-    color:var(--preto);
+    color:var(--cinza-texto);
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
   }
   img{display:block;max-width:100%;}
   a{text-decoration:none;}
+  h1, h2, h3, h4 { font-family: var(--fonte-titulo); color: var(--azul-escuro); }
 
-  ::selection{background:var(--amarelo);color:var(--preto);}
+  ::selection{background:var(--amarelo);color:var(--azul-escuro);}
 
   /* ================= SPLASH ================= */
   #splash{
@@ -59,239 +61,180 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    padding-bottom:12vh;
     z-index:9999;
-    transition:opacity 1s ease, visibility 1s ease;
+    transition:opacity 0.8s ease, visibility 0.8s ease;
   }
   #splash.hide{opacity:0;visibility:hidden;}
   #splash img{
-    width:520px;max-width:85vw;height:auto;
+    width:400px;max-width:80vw;height:auto;
     animation:pulsarLogo 2s ease-in-out infinite;
   }
   @keyframes pulsarLogo{
     0%,100%{transform:scale(1);}
-    50%{transform:scale(1.06);}
+    50%{transform:scale(1.05);}
   }
 
   /* ================= HERO ================= */
   .hero{
     position:relative;
-    min-height:100vh;
-    min-height:100svh;
+    min-height:90vh;
     display:flex;align-items:center;justify-content:center;
     text-align:center;
-    overflow:hidden;
-    isolation:isolate;
-    padding:110px 24px 130px;
+    background: var(--branco);
+    padding:120px 24px 160px;
+    overflow: hidden;
   }
 
-  .hero-bg{
-    position:absolute;inset:0;z-index:-3;
-    overflow:hidden;
-    transform:scale(1.08);
-    animation:heroZoom 18s ease-in-out infinite alternate;
-  }
-  @keyframes heroZoom{ from{transform:scale(1.08);} to{transform:scale(1.18);} }
-
-  .hero-bg .slide{
-    position:absolute;inset:0;
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position:center;
-    opacity:0;
-    transition:opacity 1.2s ease;
-  }
-  .hero-bg .slide.active{opacity:1;}
-
-  /* Overlay mais leve — sem degradê branco na frente */
-  .hero-overlay{
-    position:absolute;inset:0;z-index:-2;
-    background:
-      radial-gradient(120% 90% at 50% 40%, rgba(13,71,161,.35) 0%, rgba(21,101,192,.55) 60%, rgba(30,136,229,.70) 100%),
-      linear-gradient(140deg, rgba(255,193,7,.12), transparent 55%);
+  /* Ondas do topo (como no panfleto) */
+  .hero-wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%231554a6" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,117.3C960,139,1056,181,1152,192C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat top center;
+    background-size: cover;
+    z-index: 0;
   }
 
-  .blob{
-    position:absolute;border-radius:50%;filter:blur(90px);
-    opacity:.45;z-index:-1;pointer-events:none;
-  }
-  .blob.b1{width:380px;height:380px;background:var(--amarelo);top:-90px;left:-90px;animation:float 11s ease-in-out infinite;}
-  .blob.b2{width:320px;height:320px;background:var(--azul-claro);bottom:-110px;right:-70px;animation:float 14s ease-in-out infinite reverse;}
-  @keyframes float{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(30px,-35px) scale(1.12);}
-  }
-
-  .hero-content{position:relative;max-width:1100px;}
-
+  .hero-content{position:relative; z-index: 2; max-width:1000px;}
+  
   .hero-badge{
-    display:inline-flex;align-items:center;gap:11px;
-    background:rgba(255,255,255,.12);
-    border:1.5px solid rgba(255,193,7,.55);
-    color:var(--amarelo-claro);
-    padding:14px 32px;border-radius:100px;
-    font-size:1rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    backdrop-filter:blur(10px);
-    margin-bottom:34px;
-    animation:subir .9s var(--ease) both;
-  }
-  .hero-badge::before{
-    content:'';width:12px;height:12px;border-radius:50%;
-    background:var(--amarelo);
-    box-shadow:0 0 0 5px rgba(255,193,7,.25);
-    animation:pulsar 2s infinite;
-  }
-  @keyframes pulsar{
-    0%,100%{box-shadow:0 0 0 5px rgba(255,193,7,.25);}
-    50%{box-shadow:0 0 0 10px rgba(255,193,7,0);}
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--amarelo); color:var(--azul-escuro);
+    padding:12px 28px;border-radius:100px;
+    font-family: var(--fonte-titulo);
+    font-size:0.9rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    margin-bottom:30px;
+    box-shadow: 0 10px 20px rgba(246, 183, 30, 0.3);
+    animation:subir .8s var(--ease) both;
   }
 
   .hero h1{
-    font-size:clamp(3rem, 8vw, 6rem);
+    font-size:clamp(2.8rem, 6vw, 5rem);
     font-weight:900;
-    line-height:1.08;
-    letter-spacing:-.02em;
-    color:var(--branco);
-    text-shadow:0 4px 24px rgba(0,0,0,.45);
-    margin-bottom:28px;
-    animation:subir .9s .12s var(--ease) both;
+    line-height:1.1;
+    color:var(--azul);
+    margin-bottom:24px;
+    animation:subir .8s .1s var(--ease) both;
   }
   .hero h1 em{
     font-style:normal;
-    background:linear-gradient(100deg,var(--amarelo) 0%,var(--amarelo-claro) 45%,#fff3c4 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
+    color:var(--amarelo);
   }
   .hero p{
-    font-size:clamp(1.25rem,2.8vw,1.65rem);
-    color:rgba(255,255,255,.95);
+    font-size:clamp(1.1rem,2.5vw,1.4rem);
+    color:var(--cinza-texto);
     font-weight:400;
-    line-height:1.65;
-    text-shadow:0 2px 16px rgba(0,0,0,.50);
-    max-width:820px;margin:0 auto 48px;
-    animation:subir .9s .24s var(--ease) both;
+    line-height:1.6;
+    max-width:750px;margin:0 auto 40px;
+    animation:subir .8s .2s var(--ease) both;
   }
   .hero-actions{
-    display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
-    animation:subir .9s .36s var(--ease) both;
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    animation:subir .8s .3s var(--ease) both;
   }
   .btn{
-    display:inline-flex;align-items:center;gap:14px;
-    padding:22px 48px;border-radius:100px;
-    font-weight:700;font-size:1.15rem;
-    transition:.4s var(--ease);
+    display:inline-flex;align-items:center;gap:10px;
+    padding:18px 38px;border-radius:100px;
+    font-family: var(--fonte-titulo); font-weight:700;font-size:1rem;
+    transition:.3s var(--ease);
   }
   .btn-primary{
-    background:var(--amarelo);color:var(--preto);
-    box-shadow:0 14px 34px rgba(255,193,7,.42);
+    background:var(--azul);color:var(--branco);
+    box-shadow:0 10px 25px rgba(21, 84, 166, 0.25);
   }
   .btn-primary:hover{
-    background:var(--amarelo-claro);
-    transform:translateY(-4px);
-    box-shadow:0 22px 46px rgba(255,193,7,.55);
+    background:var(--azul-escuro);
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(21, 84, 166, 0.35);
   }
   .btn-ghost{
-    background:rgba(255,255,255,.12);
-    color:var(--branco);
-    border:1.5px solid rgba(255,255,255,.45);
-    backdrop-filter:blur(10px);
+    background:var(--branco);
+    color:var(--azul);
+    border:2px solid var(--azul);
   }
   .btn-ghost:hover{
-    background:var(--branco);color:var(--preto);
-    border-color:var(--branco);
-    transform:translateY(-4px);
+    background:var(--azul-claro);
+    transform:translateY(-3px);
   }
 
-  @keyframes subir{
-    from{opacity:0;transform:translateY(34px);}
-    to{opacity:1;transform:translateY(0);}
+  /* Onda inferior do Hero */
+  .hero-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f6b71e" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+    background-size: cover;
+    z-index: 1;
   }
-
-  /* ================= INDICADOR DE SCROLL ================= */
+  
+  /* Indicador de Scroll */
   .scroll-indicator{
-    position:absolute;
-    bottom:26px;
-    left:50%;
+    position:absolute;bottom:30px;left:50%;
     transform:translateX(-50%);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-    color:rgba(255,255,255,.85);
-    font-size:.78rem;
-    font-weight:600;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    text-decoration:none;
-    z-index:2;
-    animation:flutuarSeta 2.2s ease-in-out infinite;
-    transition:opacity .4s var(--ease);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    color:var(--azul-escuro);font-size:.75rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.1em;
+    z-index:3; text-decoration:none;
+    animation:flutuarSeta 2s ease-in-out infinite;
   }
-  .scroll-indicator:hover{color:var(--amarelo);}
-  .scroll-indicator svg{
-    width:26px;height:26px;
-    stroke:currentColor;
-    animation:pularSeta 1.6s ease-in-out infinite;
-  }
+  .scroll-indicator svg{width:24px;height:24px;stroke:currentColor;}
   @keyframes flutuarSeta{
     0%,100%{transform:translate(-50%,0);}
     50%{transform:translate(-50%,6px);}
   }
-  @keyframes pularSeta{
-    0%,100%{transform:translateY(0);opacity:.9;}
-    50%{transform:translateY(5px);opacity:1;}
-  }
-  .scroll-indicator.esconder{opacity:0;pointer-events:none;}
+  @media (min-width:641px){ .scroll-indicator{display:none;} }
 
-  /* Só mostra no mobile e tablet — no desktop fica opcional */
-  @media (min-width:641px){
-    .scroll-indicator{display:none;}
+  @keyframes subir{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
   }
 
-  /* ================= ESTRUTURA ================= */
+  /* ================= ESTRUTURA GERAL ================= */
   .bloco{
     max-width:1180px;
     margin:0 auto;
-    padding:100px 26px;
+    padding:90px 24px;
   }
-  .cabecalho{text-align:center;margin-bottom:60px;}
+  .cabecalho{text-align:center;margin-bottom:50px;}
   .cabecalho .tag{
     display:inline-block;
-    font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--azul-medio);
-    background:rgba(21,101,192,.09);
-    padding:8px 18px;border-radius:100px;
+    font-family: var(--fonte-titulo); font-size:.8rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--azul);
+    background:var(--azul-claro);
+    padding:8px 20px;border-radius:100px;
     margin-bottom:16px;
   }
   .cabecalho h2{
-    font-size:clamp(1.75rem,4vw,2.6rem);
-    font-weight:700;letter-spacing:-.01em;line-height:1.2;
-    color:var(--preto);
+    font-size:clamp(2rem,4vw,2.8rem);
+    font-weight:800;line-height:1.2;
   }
-  .cabecalho h2 span{color:var(--azul-medio);}
+  .cabecalho h2 span{color:var(--amarelo);}
   .cabecalho .linha{
-    width:66px;height:5px;border-radius:99px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-escuro));
-    margin:20px auto 0;
+    width:60px;height:4px;border-radius:99px;
+    background:var(--azul);
+    margin:16px auto 0;
   }
 
   /* ================= SOBRE ================= */
   .sobre-wrap{
-    background:linear-gradient(180deg,var(--cinza-claro) 0%, #fff 100%);
-    border-top:1px solid var(--borda);
-    border-bottom:1px solid var(--borda);
+    background:var(--cinza-claro);
+    padding: 80px 24px;
+    position: relative;
   }
   .sobre-flex{
     display:grid;
     grid-template-columns:1fr 1.1fr;
-    gap:60px;align-items:center;
+    gap:50px;align-items:center;
     max-width:1180px;margin:0 auto;
-    padding:100px 26px;
   }
   .sobre-img-wrap{position:relative;}
   .sobre-img-wrap::before{
-    content:'';position:absolute;inset:-18px -18px 26px 26px;
-    border:3px solid var(--amarelo);
+    content:'';position:absolute;inset:-15px -15px 20px 20px;
+    border:4px solid var(--amarelo);
     border-radius:var(--r-lg);
     z-index:0;
   }
@@ -299,376 +242,299 @@
     position:relative;z-index:1;
     width:100%;border-radius:var(--r-lg);
     box-shadow:var(--sh-md);
-    transition:.6s var(--ease);
   }
-  .sobre-img-wrap:hover img{transform:translateY(-6px) rotate(-.6deg);}
 
-  .sobre-txt .tag{
-    display:inline-block;
-    font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--azul-medio);
-    background:rgba(21,101,192,.09);
-    padding:8px 18px;border-radius:100px;margin-bottom:18px;
-  }
   .sobre-txt h3{
-    font-size:clamp(1.6rem,3.2vw,2.2rem);
-    font-weight:700;line-height:1.2;letter-spacing:-.01em;
+    font-size:clamp(1.8rem,3.5vw,2.4rem);
+    font-weight:800;line-height:1.2;
     margin-bottom:20px;
   }
-  .sobre-txt h3 span{
-    position:relative;
-    background:linear-gradient(180deg,transparent 62%, var(--amarelo) 62%);
-    padding:0 3px;
-  }
+  .sobre-txt h3 span{ color: var(--azul); }
   .sobre-txt p{
-    color:var(--cinza);
-    font-size:1rem;line-height:1.8;
+    font-size:1rem;line-height:1.7;
     margin-bottom:16px;
   }
 
   .destaque-curso{
-    position:relative;overflow:hidden;
     margin-top:30px;
-    background:linear-gradient(135deg,var(--azul) 0%, var(--azul-medio) 55%, var(--azul-claro) 100%);
-    color:#fff;
-    padding:28px 30px;
-    border-radius:var(--r-md);
-    box-shadow:0 22px 50px rgba(13,71,161,.30);
-    transition:.5s var(--ease);
+    background:var(--branco);
+    border-left:6px solid var(--azul);
+    padding:24px 28px;
+    border-radius:0 var(--r-md) var(--r-md) 0;
+    box-shadow:var(--sh-sm);
   }
-  .destaque-curso::before{
-    content:'';position:absolute;top:-60px;right:-60px;
-    width:180px;height:180px;border-radius:50%;
-    background:rgba(255,193,7,.20);
-    filter:blur(10px);
-  }
-  .destaque-curso:hover{transform:translateY(-6px);box-shadow:0 32px 65px rgba(13,71,161,.42);}
   .destaque-curso h4{
-    position:relative;
     display:flex;align-items:center;gap:10px;
-    font-size:1.1rem;font-weight:700;
-    color:var(--amarelo);
+    font-size:1.15rem;font-weight:800;color:var(--azul);
     margin-bottom:10px;
   }
-  .destaque-curso p{
-    position:relative;
-    color:rgba(255,255,255,.88);
-    font-size:.95rem;line-height:1.7;margin:0;
+  .destaque-curso p{ font-size:.95rem; margin:0; }
+
+  /* ================= MATRÍCULAS (NOVO) ================= */
+  .matriculas-wrap {
+    background: var(--branco);
+    padding: 90px 24px;
+  }
+  .matriculas-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .matricula-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--branco);
+    border: 2px solid var(--azul-claro);
+    border-radius: var(--r-md);
+    padding: 24px 30px;
+    transition: 0.3s var(--ease);
+    box-shadow: var(--sh-sm);
+  }
+  .matricula-card:hover {
+    border-color: var(--azul);
+    transform: translateY(-4px);
+    box-shadow: var(--sh-md);
+  }
+  .matricula-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .matricula-icone {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--azul-claro);
+    color: var(--azul);
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .matricula-texto h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--azul-escuro);
+    margin-bottom: 4px;
+  }
+  .matricula-texto p {
+    font-size: 0.9rem;
+    color: var(--cinza-texto);
+  }
+  .matricula-data {
+    background: var(--azul);
+    color: var(--branco);
+    padding: 12px 24px;
+    border-radius: var(--r-sm);
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    text-align: center;
+    font-size: 1rem;
+    white-space: nowrap;
+    position: relative;
+  }
+  .matricula-data.alerta {
+    background: #e28342; /* Cor laranja do EJA no panfleto */
+  }
+  .badge-alterado {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    background: #d32f2f;
+    color: white;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   /* ================= NÚMEROS ================= */
   .numeros-wrap{
-    position:relative;overflow:hidden;
-    background:linear-gradient(150deg,#08152e 0%, var(--azul) 55%, var(--azul-medio) 100%);
-    padding:100px 0;
-    isolation:isolate;
+    background:var(--azul);
+    padding:80px 0;
+    color: var(--branco);
   }
-  .numeros-wrap::before{
-    content:'';position:absolute;top:-160px;left:-120px;
-    width:460px;height:460px;border-radius:50%;
-    background:rgba(255,193,7,.16);filter:blur(90px);z-index:-1;
+  .numeros-wrap .cabecalho h2 { color: var(--branco); }
+  .numeros-wrap .cabecalho .tag {
+    background: rgba(255,255,255,0.15);
+    color: var(--amarelo);
   }
-  .numeros-wrap::after{
-    content:'';position:absolute;bottom:-180px;right:-140px;
-    width:520px;height:520px;border-radius:50%;
-    background:rgba(30,136,229,.30);filter:blur(100px);z-index:-1;
-  }
-  .numeros-wrap .cabecalho h2{color:var(--branco);}
-  .numeros-wrap .cabecalho .tag{
-    color:var(--amarelo-claro);
-    background:rgba(255,193,7,.14);
-  }
-  .numeros-wrap .cabecalho .linha{background:linear-gradient(90deg,var(--amarelo),#fff3c4);}
+  .numeros-wrap .cabecalho .linha { background: var(--amarelo); }
 
   .numeros-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:20px;max-width:1180px;margin:0 auto 55px;padding:0 26px;
+    gap:24px;max-width:1180px;margin:0 auto;padding:0 24px;
   }
   .numero-card{
-    position:relative;overflow:hidden;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
     border-radius:var(--r-md);
-    padding:38px 22px;text-align:center;
-    backdrop-filter:blur(12px);
-    transition:.45s var(--ease);
-  }
-  .numero-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-claro));
-    transform:scaleX(0);transform-origin:left;
-    transition:transform .5s var(--ease);
+    padding:30px 20px;text-align:center;
+    transition:.3s var(--ease);
   }
   .numero-card:hover{
-    transform:translateY(-10px);
-    background:rgba(255,255,255,.12);
-    border-color:rgba(255,193,7,.5);
-    box-shadow:0 26px 50px rgba(0,0,0,.35);
+    background:rgba(255,255,255,0.15);
+    transform:translateY(-5px);
+    border-color:var(--amarelo);
   }
-  .numero-card:hover::before{transform:scaleX(1);}
   .numero-card .num{
-    font-size:clamp(2.4rem,5vw,3.2rem);
-    font-weight:900;line-height:1.05;
-    background:linear-gradient(160deg,var(--amarelo) 0%, var(--amarelo-claro) 60%, #fff6d0 100%);
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:12px;
-    letter-spacing:-.02em;
+    font-family: var(--fonte-titulo);
+    font-size:clamp(2.5rem,5vw,3.5rem);
+    font-weight:900;line-height:1;
+    color:var(--amarelo);
+    margin-bottom:8px;
   }
   .numero-card .label{
-    font-size:.88rem;font-weight:500;
-    color:rgba(255,255,255,.78);
-    letter-spacing:.06em;text-transform:uppercase;
-  }
-
-  .grafico{
-    max-width:840px;margin:0 auto;padding:0 26px;
-  }
-  .grafico-card{
-    background:var(--branco);
-    border-radius:var(--r-lg);
-    padding:46px 42px;
-    box-shadow:0 35px 80px rgba(0,0,0,.35);
-  }
-  .grafico-card h3{
-    font-size:1.3rem;font-weight:700;
-    color:var(--preto);margin-bottom:6px;
-    text-align:center;
-  }
-  .grafico-card .sub{
-    text-align:center;font-size:.9rem;
-    color:var(--cinza);margin-bottom:34px;
-  }
-  .barra-item{margin-bottom:24px;}
-  .barra-item:last-child{margin-bottom:0;}
-  .barra-topo{
-    display:flex;justify-content:space-between;align-items:baseline;
-    font-size:.94rem;font-weight:500;
-    color:var(--preto-suave);margin-bottom:10px;
-  }
-  .barra-topo .pct{
-    font-size:.95rem;font-weight:700;color:var(--azul-medio);
-  }
-  .barra-fundo{
-    height:14px;border-radius:99px;
-    background:#eef1f6;overflow:hidden;
-  }
-  .barra-preenchida{
-    height:100%;width:0;border-radius:99px;
-    background:linear-gradient(90deg,var(--amarelo-escuro),var(--amarelo),var(--amarelo-claro));
-    box-shadow:0 0 14px rgba(255,193,7,.6);
-    transition:width 1.5s var(--ease);
+    font-size:.9rem;font-weight:500;
+    color:rgba(255,255,255,0.9);
+    text-transform:uppercase;letter-spacing:.05em;
   }
 
   /* ================= DIFERENCIAIS ================= */
   .diferenciais-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:22px;
+    gap:24px;
   }
   .diferencial{
-    position:relative;overflow:hidden;
     display:flex;gap:18px;align-items:flex-start;
     background:var(--branco);
-    border:1px solid var(--borda);
+    border:1px solid var(--azul-claro);
     border-radius:var(--r-md);
-    padding:30px 28px;
-    transition:.45s var(--ease);
-  }
-  .diferencial::before{
-    content:'';position:absolute;left:0;top:0;bottom:0;width:5px;
-    background:linear-gradient(180deg,var(--amarelo),var(--amarelo-escuro));
-    transform:scaleY(0);transform-origin:top;
-    transition:transform .45s var(--ease);
+    padding:28px;
+    transition:.3s var(--ease);
+    box-shadow: var(--sh-sm);
   }
   .diferencial:hover{
-    transform:translateY(-8px);
-    border-color:transparent;
+    transform:translateY(-5px);
+    border-color:var(--amarelo);
     box-shadow:var(--sh-md);
   }
-  .diferencial:hover::before{transform:scaleY(1);}
   .dif-icone{
     flex-shrink:0;
-    width:58px;height:58px;border-radius:16px;
+    width:50px;height:50px;border-radius:12px;
     display:grid;place-items:center;
-    font-size:1.6rem;
-    background:linear-gradient(140deg,rgba(255,193,7,.22),rgba(255,213,79,.38));
-    transition:.45s var(--ease);
-  }
-  .diferencial:hover .dif-icone{
-    background:linear-gradient(140deg,var(--amarelo),var(--amarelo-claro));
-    transform:rotate(-8deg) scale(1.06);
+    font-size:1.5rem;
+    background:var(--azul-claro);
+    color: var(--azul);
   }
   .diferencial h4{
-    font-size:1.08rem;font-weight:700;
-    margin-bottom:7px;line-height:1.35;
+    font-size:1.1rem;font-weight:800;
+    margin-bottom:6px;
   }
   .diferencial p{
-    font-size:.92rem;color:var(--cinza);
-    line-height:1.7;
+    font-size:.9rem; line-height:1.6;
   }
 
   /* ================= CTA ================= */
   .cta-final{
-    position:relative;overflow:hidden;
-    background:linear-gradient(135deg,var(--amarelo) 0%, var(--amarelo-claro) 50%, var(--amarelo) 100%);
-    padding:100px 26px;
+    background:var(--amarelo);
+    padding:80px 24px;
     text-align:center;
-    isolation:isolate;
-  }
-  .cta-final::before,
-  .cta-final::after{
-    content:'';position:absolute;border-radius:50%;z-index:-1;
-    background:rgba(255,255,255,.35);
-    filter:blur(2px);
-  }
-  .cta-final::before{width:320px;height:320px;top:-160px;left:-100px;}
-  .cta-final::after{width:380px;height:380px;bottom:-200px;right:-120px;background:rgba(13,71,161,.10);filter:blur(4px);}
-
-  .cta-final .tag-cta{
-    display:inline-block;
-    background:var(--preto);color:var(--amarelo);
-    font-size:.76rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-    padding:9px 20px;border-radius:100px;margin-bottom:22px;
   }
   .cta-final h2{
-    font-size:clamp(1.8rem,4.5vw,2.9rem);
-    font-weight:900;letter-spacing:-.02em;line-height:1.15;
-    color:var(--preto);margin-bottom:16px;
+    font-size:clamp(2rem,4.5vw,3rem);
+    font-weight:900;
+    color:var(--azul-escuro);
+    margin-bottom:16px;
   }
   .cta-final p{
-    font-size:clamp(.98rem,2vw,1.12rem);
-    color:rgba(10,13,20,.75);
-    font-weight:400;line-height:1.65;
-    max-width:600px;margin:0 auto 38px;
+    font-size:1.1rem;
+    color:var(--azul-escuro);
+    margin-bottom:30px;
+    font-weight: 500;
   }
   .cta-final .btn-cta{
-    display:inline-flex;align-items:center;gap:12px;
-    background:var(--preto);color:var(--amarelo);
-    padding:18px 46px;border-radius:100px;
-    font-weight:700;font-size:1.02rem;
-    box-shadow:0 20px 40px rgba(10,13,20,.30);
-    transition:.4s var(--ease);
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--azul);color:var(--branco);
+    padding:18px 40px;border-radius:100px;
+    font-family: var(--fonte-titulo); font-weight:800;font-size:1rem;
+    box-shadow:0 10px 25px rgba(21, 84, 166, 0.3);
+    transition:.3s var(--ease);
   }
   .cta-final .btn-cta:hover{
-    background:var(--branco);color:var(--preto);
-    transform:translateY(-5px) scale(1.03);
-    box-shadow:0 28px 55px rgba(10,13,20,.35);
+    background:var(--azul-escuro);
+    transform:translateY(-4px);
   }
-  .cta-final .btn-cta svg{transition:transform .4s var(--ease);}
-  .cta-final .btn-cta:hover svg{transform:translateX(5px);}
 
   /* ================= RODAPÉ ================= */
   footer{
-    background:#070d1c;
+    background:var(--azul-escuro);
     color:var(--branco);
-    padding:70px 26px 26px;
-    position:relative;
-    overflow:hidden;
+    padding:60px 24px 24px;
   }
-  footer::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:4px;
-    background:linear-gradient(90deg,var(--amarelo),var(--amarelo-claro),var(--azul-claro));
-  }
-
   .footer-content{
     display:grid;
-    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
     gap:40px;
-    max-width:1180px;margin:0 auto 50px;
+    max-width:1180px;margin:0 auto 40px;
   }
-
-  .footer-brand img{width:56px;margin-bottom:18px;}
+  .footer-brand img{width:120px; margin-bottom:16px; filter: brightness(0) invert(1);}
   .footer-brand p{
-    font-size:.92rem;line-height:1.75;
-    color:rgba(255,255,255,.58);
-    max-width:280px;
+    font-size:.9rem;line-height:1.6;
+    color:rgba(255,255,255,0.7);
   }
-
   .footer-col h4{
-    font-size:.84rem;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;
+    font-size:.9rem;font-weight:800;
     color:var(--amarelo);
-    margin-bottom:20px;
+    margin-bottom:16px;
   }
-  .footer-col a,
-  .footer-col p{
+  .footer-col a, .footer-col p{
     display:block;
-    font-size:.94rem;
-    color:rgba(255,255,255,.65);
-    margin-bottom:11px;
-    transition:.3s var(--ease);
+    font-size:.9rem;
+    color:rgba(255,255,255,0.7);
+    margin-bottom:10px;
+    transition:.2s;
   }
   .footer-col a:hover{
     color:var(--amarelo);
-    transform:translateX(5px);
+    transform:translateX(4px);
   }
-
   .footer-bottom{
     max-width:1180px;margin:0 auto;
-    padding-top:26px;
-    border-top:1px solid rgba(255,255,255,.10);
-    display:flex;flex-wrap:wrap;gap:12px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    display:flex;flex-wrap:wrap;gap:10px;
     justify-content:space-between;align-items:center;
-    font-size:.88rem;color:rgba(255,255,255,.45);
+    font-size:.85rem;color:rgba(255,255,255,0.5);
   }
-  .footer-bottom strong{color:var(--amarelo);font-weight:700;}
+  .footer-bottom strong{color:var(--amarelo);}
 
-  /* ================= REVEAL ================= */
+  /* ================= REVEAL ANIMATION ================= */
   .reveal{
-    opacity:0;transform:translateY(38px);
-    transition:opacity .85s var(--ease), transform .85s var(--ease);
+    opacity:0;transform:translateY(30px);
+    transition:opacity .8s var(--ease), transform .8s var(--ease);
   }
   .reveal.visivel{opacity:1;transform:none;}
 
   /* ================= RESPONSIVO ================= */
   @media (max-width:1000px){
-    .sobre-flex{grid-template-columns:1fr;gap:52px;}
-    .sobre-img-wrap{max-width:560px;margin:0 auto;}
-    .footer-content{grid-template-columns:1fr 1fr;gap:34px;}
+    .sobre-flex{grid-template-columns:1fr;gap:40px;}
+    .footer-content{grid-template-columns:1fr 1fr;gap:30px;}
+    .matricula-card { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .matricula-data { width: 100%; }
   }
 
   @media (max-width:640px){
-    #splash{padding-bottom:8vh;}
-    #splash img{width:320px;}
-
-    .hero{
-      min-height:100vh;
-      min-height:100svh;
-      padding:90px 20px 90px;
-    }
-    .hero-badge{font-size:.82rem;padding:11px 24px;gap:9px;margin-bottom:26px;}
-    .hero h1{font-size:clamp(2.4rem, 10vw, 3.4rem);margin-bottom:22px;}
-    .hero p{font-size:clamp(1.05rem,4.5vw,1.25rem);margin-bottom:36px;}
-    .hero-actions{flex-direction:column;align-items:stretch;gap:14px;}
-    .hero-actions .btn{justify-content:center;padding:18px 34px;font-size:1.02rem;}
-
-    .bloco{padding:70px 20px;}
-    .sobre-flex{padding:70px 20px;}
-    .sobre-img-wrap::before{inset:-12px -12px 18px 18px;}
-
-    .numeros-wrap{padding:70px 0;}
-    .grafico-card{padding:32px 22px;}
-    .numero-card{padding:30px 16px;}
-
-    .diferencial{padding:24px 22px;gap:14px;}
-    .dif-icone{width:50px;height:50px;font-size:1.35rem;}
-
-    .cta-final{padding:70px 20px;}
-
-    footer{padding:50px 20px 22px;}
-    .footer-content{grid-template-columns:1fr;gap:30px;}
-    .footer-bottom{justify-content:center;text-align:center;}
+    .hero{ padding: 100px 20px 130px; }
+    .hero h1{ font-size: 2.5rem; }
+    .hero-actions{ flex-direction: column; }
+    .hero-actions .btn{ justify-content: center; }
+    .sobre-img-wrap::before{ inset:-10px -10px 15px 15px; }
+    .bloco{ padding: 60px 20px; }
+    .footer-content{ grid-template-columns:1fr; }
+    .footer-bottom{ justify-content: center; text-align: center; }
+    .matricula-info { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 
   @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{
-      animation-duration:.01ms !important;
-      animation-iteration-count:1 !important;
-      transition-duration:.01ms !important;
-      scroll-behavior:auto !important;
-    }
+    *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
     .reveal{opacity:1;transform:none;}
   }
 </style>
@@ -680,45 +546,30 @@
   </div>
 
   <script>
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
   </script>
 
+  <!-- ================= HERO ================= -->
   <section class="hero">
-    <div class="hero-bg" id="heroBanner">
-      <div class="slide active" style="background-image:url('escola.jpg')"></div>
-      <div class="slide" style="background-image:url('escola.jpg'); background-position:left top;"></div>
-      <div class="slide" style="background-image:url('escola.jpg'); background-position:right bottom;"></div>
-      <div class="slide" style="background-image:url('escola.jpg'); background-position:center top;"></div>
-    </div>
-
-    <div class="hero-overlay"></div>
-    <span class="blob b1"></span>
-    <span class="blob b2"></span>
-
+    <div class="hero-wave-top"></div>
     <div class="hero-content">
       <span class="hero-badge">Unidade Polo</span>
       <h1>Conheça a <em>Unidade Polo</em></h1>
       <p>Tudo o que você precisa saber em um só lugar — estrutura, história, números e o que faz a nossa escola ser diferente.</p>
       <div class="hero-actions">
-        <a href="saiba.html" class="btn btn-primary">
-          Explorar a escola
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+        <a href="#matriculas" class="btn btn-primary">
+          Matrículas 2027
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="sobre.html" class="btn btn-ghost">Nossa história</a>
+        <a href="#sobre" class="btn btn-ghost">Nossa história</a>
       </div>
     </div>
-
-    <a href="#sobre" class="scroll-indicator" id="scrollIndicator" aria-label="Rolar para saber mais">
+    <div class="hero-wave-bottom"></div>
+    
+    <a href="#sobre" class="scroll-indicator">
       <span>Role para explorar</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </a>
   </section>
 
@@ -732,26 +583,70 @@
       <div class="sobre-txt reveal">
         <span class="tag">Quem somos</span>
         <h3>Nossa <span>História</span></h3>
-        <p>
-          A Unidade Polo foi fundada com o objetivo de oferecer uma educação de excelência,
-          cresceu junto com a comunidade e hoje é referência em ensino de qualidade.
-        </p>
-        <p>
-          Acreditamos que cada aluno é único e merece um ambiente acolhedor, professores
-          dedicados e estrutura completa para desenvolver todo o seu potencial.
-        </p>
+        <p>A Unidade Polo foi fundada com o objetivo de oferecer uma educação de excelência, cresceu junto com a comunidade e hoje é referência em ensino de qualidade.</p>
+        <p>Acreditamos que cada aluno é único e merece um ambiente acolhedor, professores dedicados e estrutura completa para desenvolver todo o seu potencial.</p>
 
         <div class="destaque-curso">
           <h4>💻 Curso Técnico em Desenvolvimento de Sistemas</h4>
-          <p>
-            A Unidade Polo oferece o curso técnico em Desenvolvimento de Sistemas,
-            formando profissionais preparados para criar softwares, sites e aplicações
-            modernas, com aulas práticas e professores atuantes no mercado.
-          </p>
+          <p>A Unidade Polo oferece o curso técnico em Desenvolvimento de Sistemas, formando profissionais preparados para criar softwares, sites e aplicações modernas.</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ================= MATRÍCULAS 2027 (BASEADO NO PANFLETO) ================= -->
+  <section class="matriculas-wrap" id="matriculas">
+    <div class="cabecalho reveal">
+      <span class="tag">Aviso Importante</span>
+      <h2>Matrículas e Rematrículas <span>2027</span></h2>
+      <div class="linha"></div>
+    </div>
+
+    <div class="matriculas-grid reveal">
+      <!-- Rematrícula -->
+      <div class="matricula-card">
+        <div class="matricula-info">
+          <div class="matricula-icone">🔄</div>
+          <div class="matricula-texto">
+            <h4>Rematrícula na mesma escola</h4>
+            <p>Para estudantes já matriculados na rede estadual em 2026.</p>
+          </div>
+        </div>
+        <div class="matricula-data">
+          09 a 22/11/2026
+        </div>
+      </div>
+
+      <!-- EJA -->
+      <div class="matricula-card">
+        <div class="matricula-info">
+          <div class="matricula-icone" style="background:#fce8e6; color:#d32f2f;">👥</div>
+          <div class="matricula-texto">
+            <h4>EJA – intenção de matrícula</h4>
+            <p>Para estudantes da Educação de Jovens e Adultos (EJA).</p>
+          </div>
+        </div>
+        <div class="matricula-data alerta">
+          <span class="badge-alterado">ALTERADO</span>
+          09 a 11/12/2026
+        </div>
+      </div>
+
+      <!-- Matrícula Inicial -->
+      <div class="matricula-card">
+        <div class="matricula-info">
+          <div class="matricula-icone">📄</div>
+          <div class="matricula-texto">
+            <h4>Matrícula inicial e Ed. Profissional</h4>
+            <p>Para 6º ano do Ensino Fundamental, 1ª série do Ensino Médio e classificados na Educação Profissional.</p>
+          </div>
+        </div>
+        <div class="matricula-data">
+          23/11 a 04/12/2026
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= NÚMEROS ================= -->
   <section class="numeros-wrap" id="numeros">
@@ -779,30 +674,6 @@
         <div class="label">Satisfação</div>
       </div>
     </div>
-
-    <div class="grafico reveal">
-      <div class="grafico-card">
-        <h3>Resultados em Avaliações</h3>
-        <p class="sub">Desempenho médio dos nossos alunos por disciplina</p>
-
-        <div class="barra-item">
-          <div class="barra-topo"><span>Português</span><span class="pct">92%</span></div>
-          <div class="barra-fundo"><div class="barra-preenchida" data-width="92"></div></div>
-        </div>
-        <div class="barra-item">
-          <div class="barra-topo"><span>Matemática</span><span class="pct">88%</span></div>
-          <div class="barra-fundo"><div class="barra-preenchida" data-width="88"></div></div>
-        </div>
-        <div class="barra-item">
-          <div class="barra-topo"><span>Ciências</span><span class="pct">90%</span></div>
-          <div class="barra-fundo"><div class="barra-preenchida" data-width="90"></div></div>
-        </div>
-        <div class="barra-item">
-          <div class="barra-topo"><span>Redação</span><span class="pct">85%</span></div>
-          <div class="barra-fundo"><div class="barra-preenchida" data-width="85"></div></div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ================= DIFERENCIAIS ================= -->
@@ -821,15 +692,13 @@
           <p>Equipe com formação superior e pós-graduação.</p>
         </div>
       </div>
-
       <div class="diferencial reveal">
         <div class="dif-icone">💻</div>
         <div>
           <h4>Laboratórios de Informática</h4>
-          <p>Computadores modernos e internet de alta velocidade para as aulas práticas.</p>
+          <p>Computadores modernos e internet de alta velocidade.</p>
         </div>
       </div>
-
       <div class="diferencial reveal">
         <div class="dif-icone">📚</div>
         <div>
@@ -837,7 +706,6 @@
           <p>Acervo com mais de 5.000 títulos disponíveis.</p>
         </div>
       </div>
-
       <div class="diferencial reveal">
         <div class="dif-icone">🍎</div>
         <div>
@@ -845,7 +713,6 @@
           <p>Cardápio balanceado feito por nutricionistas.</p>
         </div>
       </div>
-
       <div class="diferencial reveal">
         <div class="dif-icone">🛡️</div>
         <div>
@@ -853,12 +720,11 @@
           <p>Monitoramento e equipe preparada para cuidar.</p>
         </div>
       </div>
-
       <div class="diferencial reveal">
         <div class="dif-icone">🚀</div>
         <div>
           <h4>Curso Técnico em D.S.</h4>
-          <p>Formação completa em Desenvolvimento de Sistemas com foco no mercado.</p>
+          <p>Formação completa em Desenvolvimento de Sistemas.</p>
         </div>
       </div>
     </div>
@@ -867,15 +733,11 @@
   <!-- ================= CTA ================= -->
   <section class="cta-final">
     <div class="reveal">
-      <span class="tag-cta">Matrículas abertas</span>
       <h2>Pronto para fazer parte?</h2>
-      <p>Matrículas abertas para o Curso Técnico em Desenvolvimento de Sistemas.</p>
+      <p>Garanta já a sua vaga para o ano de 2027.</p>
       <a href="mailto:contato@unidadepolo.com" class="btn-cta">
         Falar com a Escola
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </div>
   </section>
@@ -887,32 +749,26 @@
         <img src="logo.png" alt="Logo Unidade Polo">
         <p>Educação de excelência, ambiente acolhedor e estrutura completa para desenvolver todo o seu potencial.</p>
       </div>
-
       <div class="footer-col">
         <h4>📍 Endereço</h4>
         <p>Rua Exemplo, 123</p>
         <p>Bairro — Cidade/UF</p>
         <p>CEP: 00000-000</p>
       </div>
-
       <div class="footer-col">
         <h4>📞 Contato</h4>
         <a href="tel:+550000000000">(00) 0000-0000</a>
         <a href="mailto:contato@unidadepolo.com">contato@unidadepolo.com</a>
-        <a href="mailto:secretaria@unidadepolo.com">secretaria@unidadepolo.com</a>
       </div>
-
       <div class="footer-col">
         <h4>🔗 Redes Sociais</h4>
         <a href="#" target="_blank" rel="noopener">Instagram</a>
         <a href="#" target="_blank" rel="noopener">Facebook</a>
         <a href="#" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="#" target="_blank" rel="noopener">YouTube</a>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <span>© 2025 <strong>Unidade Polo</strong>. Todos os direitos reservados.</span>
+      <span>© 2027 <strong>Unidade Polo</strong>. Todos os direitos reservados.</span>
       <span>Feito com dedicação para nossos alunos 💛</span>
     </div>
   </footer>
@@ -920,25 +776,11 @@
 <script>
   window.addEventListener('load', () => {
     window.scrollTo(0, 0);
-
     setTimeout(() => {
       const splash = document.getElementById('splash');
       if (splash) splash.classList.add('hide');
-    }, 3000);
+    }, 2000); // Reduzi o tempo de splash para 2s para não irritar o usuário
   });
-
-  /* ---------- Banner rotativo ---------- */
-  (function iniciarBanner(){
-    const slides = document.querySelectorAll('#heroBanner .slide');
-    if (slides.length < 2) return;
-
-    let idx = 0;
-    setInterval(() => {
-      slides[idx].classList.remove('active');
-      idx = (idx + 1) % slides.length;
-      slides[idx].classList.add('active');
-    }, 5000);
-  })();
 
   /* ---------- Reveal on scroll ---------- */
   const io = new IntersectionObserver((entradas) => {
@@ -947,18 +789,18 @@
       entrada.target.classList.add('visivel');
       io.unobserve(entrada.target);
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.14, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i % 6) * 70 + 'ms';
+    el.style.transitionDelay = (i % 6) * 50 + 'ms';
     io.observe(el);
   });
 
-  /* ---------- Contadores animados ---------- */
+  /* ---------- Contadores ---------- */
   function animarContador(el) {
     const alvo = parseInt(el.dataset.count, 10);
     const sufixo = el.dataset.suffix || '';
-    const duracao = 1700;
+    const duracao = 1500;
     const inicio = performance.now();
 
     function passo(agora) {
@@ -979,35 +821,6 @@
   }, { threshold: 0.5 });
 
   document.querySelectorAll('[data-count]').forEach((el) => ioContador.observe(el));
-
-  /* ---------- Barras do gráfico ---------- */
-  const ioBarras = new IntersectionObserver((entradas) => {
-    entradas.forEach((entrada) => {
-      if (!entrada.isIntersecting) return;
-      entrada.target.querySelectorAll('.barra-preenchida').forEach((barra, i) => {
-        setTimeout(() => {
-          barra.style.width = barra.dataset.width + '%';
-        }, i * 160);
-      });
-      ioBarras.unobserve(entrada.target);
-    });
-  }, { threshold: 0.35 });
-
-  const grafico = document.querySelector('.grafico');
-  if (grafico) ioBarras.observe(grafico);
-
-  /* ---------- Indicador de scroll (esconde ao rolar) ---------- */
-  const scrollIndicator = document.getElementById('scrollIndicator');
-  if (scrollIndicator) {
-    const esconderIndicador = () => {
-      if (window.scrollY > 60) {
-        scrollIndicator.classList.add('esconder');
-      } else {
-        scrollIndicator.classList.remove('esconder');
-      }
-    };
-    window.addEventListener('scroll', esconderIndicador, { passive: true });
-  }
 </script>
 
 </body>
